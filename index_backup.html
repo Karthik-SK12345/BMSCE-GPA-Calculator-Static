@@ -1,0 +1,1384 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <meta name="description" content="CALCULATE THE SGPA, CGPA AND PERCENTAGE OF YOUR BMSCE RESULTS QUICKLY HERE.">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="cgpabody.css"> -->
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>BMSCE SGPA CALCULATOR</title>
+    <link rel="icon" href="bmsce_circle.png" type="image/icon type">
+</head>
+<style>
+    .glow-on-hover {
+        width: 200px;
+        height: 50px;
+        border: none;
+        outline: none;
+        color: #fff;
+        background: #111;
+        cursor: pointer;
+        position: relative;
+        z-index: 0;
+        border-radius: 10px;
+        font-weight: bold;
+        border: 1px solid crimson;
+    }
+    
+    .glow-on-hover:before {
+        content: '';
+        background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        background-size: 400%;
+        z-index: -1;
+        border: 1px solid crimson;
+        filter: blur(5px);
+        width: calc(100% + 4px);
+        height: calc(100% + 4px);
+        animation: glowing 20s linear infinite;
+        opacity: 0;
+        transition: opacity .3s ease-in-out;
+        border-radius: 10px;
+    }
+    
+    .glow-on-hover:active {
+        color: #000;
+        border: 1px solid crimson;
+    }
+    
+    .glow-on-hover:active:after {
+        background: transparent;
+        border: 1px solid crimson;
+    }
+    
+    .glow-on-hover:hover:before {
+        opacity: 2;
+        border: 1px solid crimson;
+    }
+    
+    .glow-on-hover:after {
+        z-index: -1;
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: #111;
+        left: 0;
+        top: 0;
+        border-radius: 10px;
+        border: 1px solid crimson;
+    }
+    
+    @keyframes glowing {
+        0% {
+            background-position: 0 0;
+        }
+        50% {
+            background-position: 400% 0;
+        }
+        100% {
+            background-position: 0 0;
+        }
+    }
+    
+    body {
+        /* margin: 2rem; */
+        color: #6a6f8c;
+        background: #c8c8c8;
+        font: 600 16px/18px 'Open Sans', sans-serif;
+    }
+    
+    *,
+     :after,
+     :before {
+        box-sizing: border-box
+    }
+    
+    .clearfix:after,
+    .clearfix:before {
+        content: '';
+        display: table
+    }
+    
+    .clearfix:after {
+        clear: both;
+        display: block
+    }
+    
+    a {
+        color: inherit;
+        text-decoration: none
+    }
+    
+    .login-wrap {
+        width: 100%;
+        margin: 1rem auto;
+        max-width: 900px;
+        min-height: 700px;
+        box-shadow: 0 12px 15px 0 rgba(0, 0, 0, .24), 0 17px 50px 0 rgba(0, 0, 0, .19);
+        position: relative;
+        /* border-radius: 1.5rem; */
+        /* background: url(https://webcampus.bmsce.in/assets/img/img15.png) no-repeat center; */
+        /* box-shadow: 0 12px 15px 0 #1161ee, 0 17px 50px 0 #1161ee; */
+    }
+    
+    #calci {
+        border: 3px solid white;
+        margin-top: 5.5rem;
+        margin-bottom: 1rem;
+        position: relative;
+        box-shadow: 0 12px 15px 0 rgba(0, 0, 0, .24), 0 17px 50px 0 rgba(0, 0, 0, .19);
+        /* background: conic-gradient(120deg, #ea4335 0%, #74a7fa 25%, #89e9a2 50%, #f1c643 75%, pink 100%);
+        animation: progress 8s linear infinite; */
+    }
+    
+    .login-html {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        padding: 40px 20px 10px 20px;
+        background: rgba(40, 57, 101, .9);
+        /* border-radius: 1.5rem; */
+    }
+    
+    .login-html .sign-in-htm,
+    .login-html .sign-up-htm {
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        position: absolute;
+        transform: rotateY(180deg);
+        backface-visibility: hidden;
+        transition: all .4s linear;
+    }
+    
+    .login-html .sign-in,
+    .login-html .sign-up,
+    .login-form .group .check {
+        display: none;
+    }
+    
+    .login-html .tab,
+    .login-form .group .label,
+    .login-form .group .button {
+        text-transform: uppercase;
+    }
+    
+    .login-html .tab {
+        font-size: 22px;
+        margin-right: 15px;
+        padding-bottom: 5px;
+        margin: 0 15px 10px 0;
+        display: inline-block;
+        border-bottom: 2px solid transparent;
+    }
+    
+    .login-html .sign-in:checked+.tab,
+    .login-html .sign-up:checked+.tab {
+        color: #fff;
+        border-color: #1161ee;
+    }
+    
+    .login-form {
+        min-height: 345px;
+        position: relative;
+        perspective: 1000px;
+        transform-style: preserve-3d;
+    }
+    
+    .login-form .group {
+        margin-bottom: 15px;
+    }
+    
+    .login-form .group .label,
+    .login-form .group .input,
+    .login-form .group .button {
+        width: 100%;
+        color: #fff;
+        display: block;
+    }
+    
+    .login-form .group .input,
+    .login-form .group .button {
+        border: none;
+        padding: 15px 20px;
+        border-radius: 25px;
+        background: rgba(255, 255, 255, .1);
+    }
+    
+    .login-form .group input[data-type="password"] {
+        text-security: circle;
+        -webkit-text-security: circle;
+    }
+    
+    .login-form .group .label {
+        color: #aaa;
+        font-size: 12px;
+    }
+    
+    .login-form .group .button {
+        background: #1161ee;
+    }
+    
+    .login-form .group label .icon {
+        width: 15px;
+        height: 15px;
+        border-radius: 2px;
+        position: relative;
+        display: inline-block;
+        background: rgba(255, 255, 255, .1);
+    }
+    
+    .login-form .group label .icon:before,
+    .login-form .group label .icon:after {
+        content: '';
+        width: 10px;
+        height: 2px;
+        background: #fff;
+        position: absolute;
+        transition: all .2s ease-in-out 0s;
+    }
+    
+    .login-form .group label .icon:before {
+        left: 3px;
+        width: 5px;
+        bottom: 6px;
+        transform: scale(0) rotate(0);
+    }
+    
+    .login-form .group label .icon:after {
+        top: 6px;
+        right: 0;
+        transform: scale(0) rotate(0);
+    }
+    
+    .login-form .group .check:checked+label {
+        color: #fff;
+    }
+    
+    .login-form .group .check:checked+label .icon {
+        background: #1161ee;
+    }
+    
+    .login-form .group .check:checked+label .icon:before {
+        transform: scale(1) rotate(45deg);
+    }
+    
+    .login-form .group .check:checked+label .icon:after {
+        transform: scale(1) rotate(-45deg);
+    }
+    
+    .login-html .sign-in:checked+.tab+.sign-up+.tab+.login-form .sign-in-htm {
+        transform: rotate(0);
+    }
+    
+    .login-html .sign-up:checked+.tab+.login-form .sign-up-htm {
+        transform: rotate(0);
+    }
+    
+    #navlogo {
+        border-radius: 20px;
+        border: 3px solid white;
+        animation: progress 2s linear infinite;
+    }
+    
+    #user {
+        color: rgb(7, 247, 7);
+        margin: 11px;
+    }
+    /* body {
+        /* background-image: url(/images/bg.jpg); 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        background-color: indianred;
+    */
+    
+    #btn {
+        border-radius: 20px;
+        transition: all 0.4s ease-out;
+    }
+    
+    #btn:hover {
+        background-color: yellow;
+        color: red;
+        transform: scale(1.1);
+    }
+    
+    #header {
+        transition: all 0.4s ease-out;
+    }
+    
+    #header:hover {
+        background-color: aqua;
+        color: red;
+        transform: scale(1.07);
+        border-radius: 3rem;
+    }
+    
+    #nav_items {
+        transition: all 0.4s ease-out;
+    }
+    /* #nav_items:hover {
+        background-color: rgb(168, 233, 190);
+        border-radius: 15px;
+        color: red;
+    } */
+    
+    #mybmsce {
+        transition: all 0.4s ease-out;
+    }
+    
+    body {
+        background-color: #161b22;
+        background-size: cover;
+    }
+    
+     ::-webkit-scrollbar {
+        width: 8px;
+    }
+    
+     ::-webkit-scrollbar-track {
+        background: #161b22;
+    }
+    
+     ::-webkit-scrollbar-thumb {
+        background: #161b22;
+    }
+    
+    .float {
+        position: fixed;
+        width: 40px;
+        height: 40px;
+        bottom: 40px;
+        right: 40px;
+        color: #FFF;
+        border-radius: 50px;
+        text-align: center;
+        box-shadow: 3px 3px 3px #999;
+        stroke: #fff;
+        background-color: #25D366;
+        border-color: #fff
+    }
+    
+    .resp-sharing-button__icon,
+    .resp-sharing-button__link {
+        display: inline-block
+    }
+    
+    .resp-sharing-button__link {
+        text-decoration: none;
+        color: #fff;
+        margin: .5em
+    }
+    
+    .resp-sharing-button {
+        border-radius: 5px;
+        transition: 25ms ease-out;
+        padding: .2em .7em;
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif
+    }
+    
+    .resp-sharing-button__icon svg {
+        width: 1.9em;
+        height: 2.4em;
+        margin-left: .1em
+    }
+    
+    .resp-sharing-button--small svg {
+        margin: 0;
+        vertical-align: middle
+    }
+    
+    .resp-sharing-button__icon {
+        stroke: #fff;
+        fill: none
+    }
+    
+    .resp-sharing-button__icon--solid,
+    .resp-sharing-button__icon--solidcircle {
+        fill: #fff;
+        stroke: none
+    }
+    
+    .resp-sharing-button--whatsapp {
+        background-color: #25D366;
+        border-color: #25D366
+    }
+    
+    .resp-sharing-button--whatsapp:active,
+    .resp-sharing-button--whatsapp:hover {
+        background-color: #1DA851;
+        border-color: #1DA851
+    }
+    
+    html {
+        position: relative;
+        min-height: 100%;
+    }
+    
+    .container {
+        width: 100%;
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    /* .footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        margin-top: 520px;
+        font-family: Arial, Helvetica, sans-serif;
+    } */
+    
+    img {
+        border-radius: 3rem;
+        border: 3px solid white;
+    }
+    /* footer {
+        color: white;
+        font-weight: bolder;
+        text-align: center;
+        padding-bottom: 20px;
+    } */
+    
+    .crumbs {
+        display: block;
+        width: 95%;
+        margin: 5px auto;
+        padding: 15px;
+        border-radius: 12px;
+    }
+    /* .card {
+        display: block;
+        width: 90%;
+        margin: 12px auto;
+        padding: 15px;
+        border-radius: 12px;
+    } */
+    
+    #b1 {
+        border: 3px solid gold;
+        border-radius: 15px;
+    }
+    
+    #b1:hover {
+        color: red;
+        background: rgb(6, 190, 6);
+    }
+    
+    #b2 {
+        border: 3px solid gold;
+        border-radius: 15px;
+    }
+    
+    #b2:hover {
+        color: red;
+        background: rgb(6, 190, 6);
+    }
+    
+    #imgs {
+        width: 50px;
+        height: 300px;
+        border: 10px ridge red;
+        border-radius: 100px;
+    }
+    
+    .slider {
+        display: block;
+        margin: 12px auto;
+        width: 53%;
+        padding: 10px;
+    }
+    
+    #exp {
+        display: block;
+        margin: 8px auto;
+        width: 33%;
+        padding: 5px;
+        border: 3px solid gold;
+        border-radius: 20px;
+    }
+    
+    .fa-google {
+        color: rgb(235, 18, 18);
+        text-decoration: none;
+        box-shadow: 3px 3px 3px #999;
+        background: conic-gradient(from -45deg, #ea4335 110deg, #4285f4 90deg 180deg, #34a853 180deg 270deg, #fbbc05 270deg) 73% 55%/150% 150% no-repeat;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        -webkit-text-fill-color: transparent;
+    }
+    
+    #icon {
+        /* background-color: red; */
+        position: fixed;
+        color: #3c70e2;
+        border: 3px solid purple;
+        /* background: linear-gradient(120deg, red 0%, orange 100%);
+        animation: progress 2s linear infinite; */
+        height: 45px;
+        width: 45px;
+        border-radius: 30px;
+        left: 37px;
+        bottom: 40px;
+        padding: 3.5px;
+    }
+    
+    #user {
+        color: rgb(104, 175, 255);
+    }
+    
+    .fa {
+        padding: 2px;
+        font-size: 27px;
+        width: 90px;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 5rem;
+    }
+    /* Add a hover effect if you want */
+    
+    .fa:hover {
+        opacity: 0.7;
+    }
+    /* Set a specific color for each brand */
+    /* Facebook */
+    
+    .fa-envelope {
+        background: #f0f1f5;
+        color: white;
+        border-radius: 5rem;
+        box-shadow: 3px 3px 3px #999;
+    }
+    /* /* body {
+        background-color: #000000;
+        color: #ffffff;
+    }
+
+    .progress-bar {
+        position: fixed;
+        top: 0;
+        width: 0;
+        height: 6px;
+        z-index: 2;
+        background: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
+        animation: progress 1s linear infinite;
+        border-radius: 5px;
+    }
+
+    .text {
+        padding: 10rem;
+    }
+
+    @keyframes progress {
+        0% {
+            filter: hue-rotate(0deg);
+        }
+
+        100% {
+            filter: hue-rotate(360deg);
+        }
+    }*/
+    
+    #ct {
+        border: 4px solid rgb(25, 199, 112);
+        border-radius: 15px;
+        background-color: rgb(241, 228, 183);
+        color: blue;
+    }
+    
+    #ct:hover {
+        color: red;
+        background: rgb(6, 190, 6);
+    }
+    
+    #thumbs {
+        color: rgb(59, 32, 214);
+        font-size: larger;
+    }
+    
+    .footer {
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+        background-color: #161b22;
+        font-weight: bolder;
+        font-weight: 600;
+        color: white;
+        text-align: center;
+        height: 2.5rem;
+        text-align: center;
+        font-size: 15.5px;
+        padding-top: 19px;
+        padding-bottom: 4.3rem;
+    }
+    
+    #contact {
+        font-weight: bolder;
+        font-size: 21px;
+        margin: 8px;
+        color: white;
+        cursor: pointer;
+    }
+    
+    .footer {
+        /* position: fixed; */
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: rgb(41, 38, 38);
+        font-weight: bold;
+        color: white;
+        text-align: center;
+        height: 1.2rem;
+        text-align: center;
+        /* font-size: 20px; */
+        padding-top: 15px;
+        padding-bottom: 3rem;
+    }
+    
+    #font {
+        font-weight: bold;
+    }
+    
+    .dropdown-item {
+        font-weight: bold;
+    }
+    
+    #nav_items {
+        transition: all 0.2s ease-in-out;
+        font-weight: bold;
+    }
+    
+    #nav_items:hover {
+        background-color: rgb(80, 59, 64);
+        border-radius: 2px;
+    }
+    
+    #bold {
+        font-weight: bold;
+    }
+    
+    .navbar-nav li:hover>ul.dropdown-menu {
+        display: block;
+    }
+    
+    .dropdown-submenu {
+        position: relative;
+    }
+    
+    .dropdown-submenu>.dropdown-menu {
+        top: 0;
+        left: 100%;
+        margin-top: -6px;
+    }
+    /* rotate caret on hover */
+    
+    .dropdown-menu>li>a:hover:after {
+        text-decoration: underline;
+        transform: rotate(-90deg);
+    }
+    
+    .container-fluid {
+        max-width: 100%;
+        margin: 0;
+    }
+    
+    #width {
+        position: static;
+        width: 450px;
+    }
+    
+    #preloader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #161b22;
+        z-index: 100;
+        /* animation: anim 5s infinite alternate; */
+    }
+    
+    #status {
+        /* margin-top: 17rem; */
+        border: 3px solid white;
+        animation: beat .33s infinite alternate;
+    }
+    
+    @keyframes beat {
+        to {
+            transform: scale(1.4);
+        }
+    }
+    
+    #mod {
+        display: block;
+        width: 33%;
+        margin: 12px auto;
+    }
+    
+    .labelid {
+        background-color: #2cb831;
+        color: #f7f7f7;
+        padding: 5px;
+        border: 2px solid #161b22;
+        border-radius: 5px;
+        width: 100%;
+        font-size: 15px;
+        font-weight: 600;
+        /* margin-bottom: 4.5rem;/ */
+    }
+    
+     ::placeholder {
+        padding-left: 1rem;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    #preloader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #161b22;
+        z-index: 100;
+        animation: beat .33s infinite alternate;
+        /* border: 3px solid white;s */
+        /* margin-top: 17rem; */
+    }
+    
+    #preloader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        /* right: 0s */
+        /* width: 100%;
+        height: 100%; */
+        /* z-index: 100; */
+        background-color: #161b22;
+    }
+    
+    #loader-img {
+        display: block;
+        position: relative;
+        left: 50%;
+        top: 50%;
+        width: 200px;
+        height: 200px;
+        margin: -100px 0 0 -100px;
+        z-index: 1001;
+        background-image: url('/bmsceloader.jpg');
+        background-repeat: no-repeat;
+        background-size: 50%;
+        background-position: center;
+        z-index: 1020;
+        border-radius: 10rem;
+        background-color: #161b22;
+    }
+    
+    #loader {
+        display: block;
+        position: relative;
+        left: 50%;
+        width: 200px;
+        height: 200px;
+        margin: -100px 0 0 -100px;
+        border-radius: 50%;
+        border: 3px solid transparent;
+        border-top-color: red;
+        /* -webkit-animation: spin 2s linear infinite; */
+        animation: spin 4s linear infinite;
+        z-index: 1001;
+        background-color: #161b22;
+    }
+    
+    #loader:before {
+        content: "";
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        right: 5px;
+        bottom: 5px;
+        border-radius: 50%;
+        border: 3px solid transparent;
+        border-top-color: blue;
+        /* -webkit-animation: spin 3s linear infinite; */
+        animation: spin 3s linear infinite;
+    }
+    
+    #loader:after {
+        content: "";
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        right: 15px;
+        bottom: 15px;
+        border-radius: 50%;
+        border: 3px solid transparent;
+        border-top-color: yellow;
+        /* -webkit-animation: spin 1.5s linear infinite; */
+        animation: spin 1.5s linear infinite;
+        background-color: #161b22;
+    }
+    
+    @-webkit-keyframes spin {
+        0% {
+            -webkit-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+        100% {
+            -webkit-transform: rotate(360deg);
+            -ms-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
+    }
+    
+    @keyframes spin {
+        0% {
+            -webkit-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+        100% {
+            -webkit-transform: rotate(360deg);
+            -ms-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
+    }
+    
+    .loader-section {
+        position: fixed;
+        top: 0;
+        width: 51%;
+        height: 100%;
+        background: #222;
+        z-index: 1000;
+        -webkit-transform: translateX(0);
+        -ms-transform: translateX(0);
+        transform: translateX(0)
+    }
+    
+    .loader-section.section-left {
+        left: 0
+    }
+    
+    .loader-section.section-right {
+        right: 0
+    }
+    
+    .panel_left {
+        -webkit-transform: translateX(-100%);
+        -ms-transform: translateX(-100%);
+        transform: translateX(-100%);
+        -webkit-transition: all .7s .3s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+        transition: all .7s .3s cubic-bezier(0.645, 0.045, 0.355, 1.000)
+    }
+    
+    .panel_right {
+        -webkit-transform: translateX(100%);
+        -ms-transform: translateX(100%);
+        transform: translateX(100%);
+        -webkit-transition: all .7s .3s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+        transition: all .7s .3s cubic-bezier(0.645, 0.045, 0.355, 1.000)
+    }
+    
+    .loaded-circle {
+        opacity: 0;
+        /* border-radius: 10rem; */
+        -webkit-transition: all .2s ease-out;
+        transition: all .4s ease-in;
+        background-color: #161b22;
+    }
+    
+    .loaded-img {
+        /* border-radius: 10rem; */
+        visibility: hidden;
+        /* /* -webkit-transform: translateY(-100%); */
+        /* -ms-transform: translateY(-100%); */
+        /* transform: translateY(-100%); */
+        -webkit-transition: all .3s 1s ease-out;
+        transition: all .3s 1s ease-in;
+        background-color: #161b22;
+    }
+    
+    input {
+        text-transform: uppercase;
+    }
+</style>
+
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top sticky-onscroll">
+        <a class="navbar-brand" href="#">
+            <img id="navlogo" src="bmsce.jpg" width="30" height="30" class="d-inline-block" alt=".." loading="lazy"><span style="margin:0.3rem;margin-top: 1rem;">BMSCE RESOURCES </span>
+        </a>
+
+    </nav>
+    <div id="preloader">
+        <div id="loader-img">
+            <div id="loader" style="border-radius: 10rem;"></div>
+        </div>
+        <!-- <div id="panel_left" class='loader-section section-left'></div> -->
+        <!-- <div id="panel_right" class='loader-section section-right'></div> -->
+    </div>
+
+    <div class="login-wrap">
+
+        <img id="calci" src="bmsce.jpg" alt="..." class="rounded-circle mx-auto d-block" style="border-radius: 10rem;">
+
+        <h3 style="color: white;font-weight: bold;text-align: center;" id="h3"><i class="fa fa-sign-in" style="width:max-content;  color: #25D366;font-size: larger;"> </i> REGISTRATION FORM</h3>
+        <div id="main_container" style="display:none;">
+            <h1>Wlcome to the game</h1>
+            <button onclick="mainApp.logout();">logout</button>
+
+
+        </div>
+        <div class="login-html">
+            <h5 style="color: #47c6f8;font-weight: bold;font-size: large;">ENTER YOUR NAME AND USN BELOW TO ACCESS THE WEBSITE CONTENTS. </h5><br>
+
+            <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab" style=" box-shadow: 0 12px 15px 0 rgba(0, 0, 0, .24), 0 17px 17px 0 rgba(0, 0, 0, .19);padding:0.7rem;display: block;text-align: center;margin: 0.2rem;"><i class="fa fa-calculator" style="width:max-content;  color:rgb(255, 91, 123);"> </i> SGPA / CGPA / % </label>
+
+            <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab" style="box-shadow: 0 12px 15px 0 rgba(0, 0, 0, .24), 0 17px 17px 0 rgba(0, 0, 0, .19);padding:0.7rem;display: block;text-align: center;margin: 0.2rem;"><i class="fa fa-book" style="width:max-content;  color:rgb(255, 91, 123);"> </i> 1ST YEAR RESOURCES</label>
+
+            <div class="login-form">
+                <div class="sign-in-htm">
+                    <form onsubmit="event.preventDefault(); validate()" class="contact-form">
+
+                        <div class="text-left" style="margin: 1rem;margin-left: -0.05rem;">
+                            <button type="button ml-auto" class="btn btn-success" style="font-weight:bold;border:1.4px solid white;font-size: large; box-shadow: 0 12px 15px 0 rgba(0, 0, 0, .24), 0 17px 50px 0 rgba(0, 0, 0, .19);" onclick="window.location.href='https://results.bmsce.in/'"><i class="fa fa-edit"
+                            style="width:max-content;  color: #ffffff;font-size: larger;"> </i> RESULTS</button>
+                        </div>
+                        <span>  <div class="text-right" style="margin-top: -3.7rem;">
+                            <button type="button" class="btn btn-primary" style="font-weight:bold;border:1.4px solid white;font-size: large; box-shadow: 0 12px 15px 0 rgba(0, 0, 0, .24), 0 17px 50px 0 rgba(0, 0, 0, .19);" onclick="window.location.href='http://bmsce.ac.in/'"><i class="fa fa-university"
+                            style="width:max-content;  color: #ffffff;font-size: larger;"> </i> BMSCE</button>
+                        </div></span>
+                        <div class="group">
+                            <h2 class="card-header" style="font-size:18px;font-weight: bold;color: white;margin-left: -1rem;"><i class="fa fa-user-circle-o" style="width:max-content;  color:rgb(255, 91, 123);font-size: larger;"> </i> NAME : </h2>
+
+                            <p class="card-title" style="margin-bottom:0.2rem; color: #f0ad4e;margin-bottom: 0.5rem;"><b>ONLY
+                                        SPACES ALLOWED AS SPECIAL CHARACTERS </b></p>
+
+                            <input type="text" class="input" name="name" id="name" placeholder="Name" required>
+                        </div>
+                        <div class="group">
+                            <h2 class="card-header" style="font-size:18px;font-weight: bold;color: white;margin-left: -1rem;"><i class="fa fa-id-card" style="width:max-content;  color:rgb(255, 91, 123);font-size: larger;"> </i> USN : </h2>
+
+                            <p class="card-title" style="margin-bottom:0.2rem; color: #f0ad4e;margin-bottom: 0.5rem;"><b>USN
+                                FORMAT EX : 1BM20CS000 (ONLY 10 LETTERS) </b></p>
+                            <input type="text" class="input" name="usn" id="usn" placeholder="Name" required>
+                        </div>
+
+                        <div class="group text-center">
+                            <input class="glow-on-hover" type="submit" id="btnRegister" name="submit" style="margin-bottom: 6rem;;text-transform:uppercase; box-shadow: 0 12px 15px 0 rgba(0, 0, 0, .24), 0 17px 50px 0 rgba(0, 0, 0, .19);">
+
+                        </div>
+
+                    </form>
+                </div>
+                <div class="sign-up-htm">
+                    <form onsubmit="event.preventDefault(); validate1()" class="contact-form1">
+                        <div class="group">
+                            <h2 class="card-header" style="font-size:18px;font-weight: bold;color: white;margin-left: -1rem;"><i class="fa fa-user-circle-o" style="width:max-content;  color:rgb(255, 91, 123);font-size: larger;"> </i> NAME : </h2>
+
+                            <p class="card-title" style="margin-bottom:0.2rem; color: #f0ad4e;margin-bottom: 0.5rem;"><b>ONLY
+                                        SPACES ALLOWED AS SPECIAL CHARACTERS </b></p>
+
+                            <input type="text" class="input" name="name1" id="name1" placeholder="Name" required>
+                        </div>
+                        <div class="group">
+                            <h2 class="card-header" style="font-size:18px;font-weight: bold;color: white;margin-left: -1rem;"><i class="fa fa-id-card" style="width:max-content;  color:rgb(255, 91, 123);font-size: larger;"> </i> USN : </h2>
+
+                            <p class="card-title" style="margin-bottom:0.2rem; color: #f0ad4e;margin-bottom: 0.5rem;"><b>USN
+                                FORMAT EX : 1BM20CS000 (ONLY 10 LETTERS) </b></p>
+                            <input type="text" class="input" name="usn1" id="usn1" placeholder="Name" required>
+                        </div>
+
+                        <div class="group text-center">
+                            <input class="glow-on-hover" type="submit" id="btnRegister" name="submit1" style="margin-bottom: 4rem;text-transform:uppercase; box-shadow: 0 12px 15px 0 rgba(0, 0, 0, .24), 0 17px 50px 0 rgba(0, 0, 0, .19);">
+
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<div class="footer">
+    <p class="m-0 text-center text-red "> <b>&copy</b> Copyright 2021. All Rights Reserved <br>Created By <a href="#" style="color: hsl(197, 100%, 55%);font-size: 15px;"><b> Karthik.S </b></a> (UG BMSCE)</p>
+</div>
+<a href="whatsapp://send?text=https://bmscesgpacalculator.netlify.app/" class="float">
+    <div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+        <svg xmlns="http://www.w3.org/2000/svg " viewBox="0 0 24 24">
+            <path
+                d="M20.1 3.9C17.9 1.7 15 .5 12 .5 5.8.5.7 5.6.7 11.9c0 2 .5 3.9 1.5 5.6L.6 23.4l6-1.6c1.6.9 3.5 1.3 5.4 1.3 6.3 0 11.4-5.1 11.4-11.4-.1-2.8-1.2-5.7-3.3-7.8zM12 21.4c-1.7 0-3.3-.5-4.8-1.3l-.4-.2-3.5 1 1-3.4L4 17c-1-1.5-1.4-3.2-1.4-5.1
+                0-5.2 4.2-9.4 9.4-9.4 2.5 0 4.9 1 6.7 2.8 1.8 1.8 2.8 4.2 2.8 6.7-.1 5.2-4.3 9.4-9.5 9.4zm5.1-7.1c-.3-.1-1.7-.9-1.9-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.1-.2.2-.3.2-.6.1s-1.2-.5-2.3-1.4c-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6s.3-.3.4-.5c.2-.1.3-.3.4-.5.1-.2
+                0-.4 0-.5C10 9 9.3 7.6 9 7c-.1-.4-.4-.3-.5-.3h-.6s-.4.1-.7.3c-.3.3-1 1-1 2.4s1 2.8 1.1 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.3-.3-.4-.6-.5z " />
+        </svg>
+    </div>
+</a>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" type="d3cf5652f3ceaab04f758bdc-text/javascript"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+<!-- <script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js" data-cf-settings="d3cf5652f3ceaab04f758bdc-|49" defer=""></script> -->
+
+<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase.js"></script>
+<script>
+    var fireBase = fireBase || firebase;
+    var hasInit = false;
+    var config = {
+        apiKey: "AIzaSyB7UKzYL-oAxbGUjtLD-qXemjbbhArKcbo",
+        authDomain: "marks-784e6.firebaseapp.com",
+        databaseURL: "https://marks-784e6-default-rtdb.firebaseio.com",
+        projectId: "marks-784e6",
+        storageBucket: "marks-784e6.appspot.com",
+        messagingSenderId: "312658005372",
+        appId: "1:312658005372:web:e55267ed3fd37c967828f9",
+        measurementId: "G-9P09XHNK8D"
+    };
+    if (!hasInit) {
+        firebase.initializeApp(config);
+        hasInit = true;
+    }
+</script>
+<script>
+    var mainApp = {};
+    (function() {
+        var mainContainer = document.getElementById("main_container");
+
+        var logtout = function() {
+            firebase.auth().signOut().then(function() {
+                console.log('success');
+                window.location.replace("login.html");
+            }, function() {})
+        }
+
+        var init = function() {
+            firebase.auth().onAuthStateChanged(function(user) {
+                if (user) {
+                    // User is signed in.
+                    console.log("stay");
+                    mainContainer.style.display = "";
+                } else {
+                    // No user is signed in.
+                    mainContainer.style.display = "none";
+                    console.log("redirect");
+                    window.location.replace("login.html");
+                }
+            });
+        }
+
+        init();
+
+        mainApp.logout = logtout;
+    })();
+</script>
+<script>
+    // Your web app's Firebase configuration
+
+    var firebaseConfig = {
+        apiKey: "AIzaSyBqHejS1lTxluwkrv6gR0VHXSNn1LCuHw0",
+        authDomain: "bmsce-index.firebaseapp.com",
+        databaseURL: "https://bmsce-index-default-rtdb.firebaseio.com",
+        projectId: "bmsce-index",
+        storageBucket: "bmsce-index.appspot.com",
+        messagingSenderId: "1093253809379",
+        appId: "1:1093253809379:web:5c18e7bf5904e51749b1d6"
+
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    // Refernece contactInfo collections
+    let contactInfo = firebase.database().ref("Users");
+
+    // Listen for a submit
+    document.querySelector(".contact-form").addEventListener("submit", submitForm);
+
+    function submitForm(e) {
+        e.preventDefault();
+
+        //   Get input Values
+        let name = document.getElementById("name").value;
+        let usn = document.getElementById("usn").value;
+
+        console.log(name, usn);
+
+        saveContactInfo(name, usn);
+
+    }
+
+    // Save infos to Firebase
+    function saveContactInfo(name, usn) {
+        let newContactInfo = contactInfo.push();
+
+        newContactInfo.set({
+            name: name,
+            usn: usn,
+
+        });
+    }
+    let contactInfo1 = firebase.database().ref("Users");
+
+    // Listen for a submit
+    document.querySelector(".contact-form1").addEventListener("submit", submitForm1);
+
+    function submitForm1(e) {
+        e.preventDefault();
+
+        //   Get input Values
+        let name1 = document.getElementById("name1").value;
+        let usn1 = document.getElementById("usn1").value;
+
+        console.log(name1, usn1);
+
+        saveContactInfo1(name1, usn1);
+
+    }
+
+    // Save infos to Firebase
+    function saveContactInfo1(name1, usn1) {
+        let newContactInfo1 = contactInfo1.push();
+
+        newContactInfo1.set({
+            name1: name1,
+            usn1: usn1,
+
+        });
+    }
+</script>
+
+<script>
+    // Your web app's Firebase configuration
+
+    // var firebaseConfig = {
+    //     apiKey: "AIzaSyAdAv29ThRw8T0_490_6JD_JLXMPt9RFmI",
+    //     authDomain: "st-year-index.firebaseapp.com",
+    //     databaseURL: "https://st-year-index-default-rtdb.firebaseio.com",
+    //     projectId: "st-year-index",
+    //     storageBucket: "st-year-index.appspot.com",
+    //     messagingSenderId: "259329049405",
+    //     appId: "1:259329049405:web:5129cf7f9223777d403b54"
+    // };
+    // Initialize Firebase
+
+
+    // Refernece contactInfo collections
+    let contactInfo1 = firebase.database().ref("Users");
+
+    // Listen for a submit
+    document.querySelector(".contact-form1").addEventListener("submit", submitForm1);
+
+    function submitForm1(e) {
+        e.preventDefault();
+
+        //   Get input Values
+        let name1 = document.getElementById("name1").value;
+        let usn1 = document.getElementById("usn1").value;
+
+        console.log(name1, usn1);
+
+        saveContactInfo1(name1, usn1);
+
+    }
+
+    // Save infos to Firebase
+    function saveContactInfo1(name1, usn1) {
+        let newContactInfo1 = contactInfo1.push();
+
+        newContactInfo1.set({
+            name1: name1,
+            usn1: usn1,
+
+        });
+    }
+</script>
+<script type="text/javascript">
+    const signUp = e => {
+        let formData = {
+            name: document.getElementById('name1').value,
+            usn: document.getElementById('usn1').value,
+
+        }
+        localStorage.setItem('formData', JSON.stringify(formData));
+
+        e.preventDefault();
+    }
+
+    function validate() {
+        let value = 0;
+        // document.getElementById("submitBtn").addEventListener("click", myFunction);
+        var regName = /^[a-zA-Z_ ]*$/;
+        var flag = 1;
+        var flagEmpty = 0;
+        while (flag) {
+            var usn = document.getElementById("usn").value;
+            var usnLower = usn.toLowerCase();
+            var str = usnLower.search(/1BM[1-2][0-9][A-Z]{2}[0-2][0-9]{2}/i);
+            if (usn.length == 0) {
+                alert("USN FIELD IS EMPTY!");
+                break;
+
+            }
+            if (str != -1 && (usn.length <= 10)) {
+                // alert("NAME AND USN IS VALID , YOU CAN ACCESS THE WEBSITE!");
+                value++;
+                flag = 0;
+
+                break;
+            } else {
+                alert("INVALID USN! PLEASE TRY AGAIN!");
+                break;
+            }
+
+        }
+        flag = 1;
+        while (flag) {
+            var name = document.getElementById("name").value;
+            var usn = document.getElementById("usn").value;
+
+            if (name.length == 0) {
+                alert("NAME FIELD IS EMPTY!");
+                break;
+            }
+
+            if (name.search(regName) != -1) {
+                flag = 0;
+                value++;
+                break;
+            } else {
+                alert("INVALID NAME (ONLY SPACES ALLOWED)!");
+                break;
+            }
+
+        }
+
+        var name = document.getElementById("name").value;
+        var usn = document.getElementById("usn").value;
+        localStorage.setItem("name-key", name);
+        localStorage.setItem("usn-key", usn);
+        if (value == 2) {
+            location.replace('homepage.html');
+        }
+
+
+
+
+    }
+</script>
+
+<script type="text/javascript">
+    const signUp1 = e => {
+        let formData1 = {
+            name1: document.getElementById('name1').value,
+            usn1: document.getElementById('usn1').value,
+
+        }
+        localStorage.setItem('formData1', JSON.stringify(formData1));
+
+        e.preventDefault();
+    }
+
+    function validate1() {
+        let value1 = 0;
+        // document.getElementById("submitBtn").addEventListener("click", myFunction);
+        var regName1 = /^[a-zA-Z_ ]*$/;
+        var flag1 = 1;
+        var flagEmpty1 = 0;
+        while (flag1) {
+            var usn1 = document.getElementById("usn1").value;
+            var usnLower1 = usn1.toLowerCase();
+            var str1 = usnLower1.search(/1BM[1-2][0-9][A-Z]{2}[0-2][0-9]{2}/i);
+            if (usn1.length == 0) {
+                alert("USN FIELD IS EMPTY!");
+                break;
+
+            }
+            if (str1 != -1 && (usn1.length <= 10)) {
+                // alert("NAME AND USN IS VALID , YOU CAN ACCESS THE WEBSITE!");
+                value1++;
+                flag1 = 0;
+
+                break;
+            } else {
+                alert("INVALID USN! PLEASE TRY AGAIN!");
+                break;
+            }
+
+        }
+        flag1 = 1;
+        while (flag1) {
+            var name1 = document.getElementById("name1").value;
+            var usn1 = document.getElementById("usn1").value;
+
+            if (name1.length == 0) {
+                alert("NAME FIELD IS EMPTY!");
+                break;
+            }
+
+            if (name1.search(regName1) != -1) {
+                flag1 = 0;
+                value1++;
+                break;
+            } else {
+                alert("INVALID NAME (ONLY SPACES ALLOWED)!");
+                break;
+            }
+
+        }
+        var name = document.getElementById("name1").value;
+        var usn = document.getElementById("usn1").value;
+        localStorage.setItem("name-key", name);
+        localStorage.setItem("usn-key", usn);
+        if (value1 == 2) {
+            location.replace('homepage1styear.html');
+        }
+
+
+
+
+    }
+</script>
+
+
+
+<script>
+    document.onreadystatechange = function() {
+        if (document.readyState === "complete") {
+            $("#panel_left").addClass("panel_left");
+            $("#panel_right").addClass("panel_right");
+            $("#loader").addClass("loaded-circle");
+            $("#loader-img").addClass("loaded-img");
+            $("#preloader").addClass("loaded-img");
+        }
+    }
+</script>
+<script>
+    let name = localStorage.getItem("name-key");
+    let usn = localStorage.getItem("usn-key");
+    document.getElementById("usn").innerHTML = usn;
+    for (let i = 0; i < document.getElementsByClassName("name").length; i++) {
+        document.getElementsByClassName("name")[i].innerHTML = name
+    }
+    // location.replace('safety.html');
+</script>
+
+</html>
