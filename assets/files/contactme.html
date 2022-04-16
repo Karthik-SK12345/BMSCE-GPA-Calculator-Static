@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <meta name="description" content="CALCULATE THE SGPA, CGPA AND PERCENTAGE OF YOUR BMSCE RESULTS QUICKLY HERE.">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="portfoliopg.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>BMSCE SGPA CALCULATOR</title>
+    <link rel="icon" href="bmsce_circle.png" type="image/icon type">
+    <script>
+        document.onreadystatechange = function() {
+            if (document.readyState === "complete") {
+                $("#panel_left").addClass("panel_left");
+                $("#panel_right").addClass("panel_right");
+                $("#loader").addClass("loaded-circle");
+                $("#loader-img").addClass("loaded-img");
+                $("#preloader").addClass("loaded-img");
+            }
+        }
+    </script>
+    <!-- <script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-app.js"></script> -->
+    <script>
+        function bootnavbar(el = 'main_navbar', options) {
+            let defaultOption = {
+
+            }
+
+            options = {...defaultOption,
+                ...options
+            }
+
+
+            var isMobile = {
+                Android: function() {
+                    return navigator.userAgent.match(/Android/i);
+                },
+                BlackBerry: function() {
+                    return navigator.userAgent.match(/BlackBerry/i);
+                },
+                iOS: function() {
+                    return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+                },
+                Opera: function() {
+                    return navigator.userAgent.match(/Opera Mini/i);
+                },
+                Windows: function() {
+                    return navigator.userAgent.match(/IEMobile/i) || navigator.userAgent.match(/WPDesktop/i);
+                },
+                any: function() {
+                    return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+                }
+            };
+
+            this.init = function() {
+                var dropdowns = document.getElementById(el).getElementsByClassName("dropdown");
+                console.log(dropdowns);
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var dropdown = dropdowns.item(i);
+                    dropdown.addEventListener("mouseover", function() {
+                        this.classList.add('show');
+                        this.getElementsByClassName("dropdown-menu")[0].classList.add('show');
+                    });
+                    dropdown.addEventListener("mouseout", function() {
+                        this.classList.remove('show');
+                        this.getElementsByClassName("dropdown-menu")[0].classList.remove('show');
+                    });
+                }
+                // document.getElementById(el).getElementsByClassName("dropdown").forEach(dropdown => {
+                //     dropdown.addEventListener("mouseover", function(){
+                //         dropdown.classList.add('show');
+                //         dropdown.getElementsByClassName("dropdown-menu")[0].classList.add('show');
+                //     });
+                //     dropdown.addEventListener("mouseout", function(){
+                //         dropdown.classList.remove('show');
+                //         dropdown.getElementsByClassName("dropdown-menu")[0].classList.remove('show');
+                //     });
+                // });
+            }
+
+            this.init();
+        }
+    </script>
+</head>
+
+<style>
+    body {
+        /* margin: 0; */
+        /* padding: 0; */
+        outline: none;
+        /* font: 20px Arial; */
+        /* font-weight: bold; */
+        /* font-family: 'Comfortaa', cursive; */
+        /* user-select: none; */
+        background-color: #161b22;
+    }
+    
+    #main {
+        /* width: 500px; */
+        /* margin: auto; */
+        /* border: 1px solid #eee; */
+        /* margin-top: 100px; */
+        /* font-family: 'Comfortaa', cursive; */
+        /* position: relative; */
+        /* border-radius: 4px; */
+        /* box-shadow: 0 0 3px #eee; */
+    }
+    
+    table {
+        margin: auto;
+        /* font-family: 'Comfortaa', cursive; */
+    }
+    
+    td {
+        padding: 10px;
+        /* font-family: 'Comfortaa', cursive; */
+    }
+    
+    h2 {
+        /* font-family: 'Comfortaa', cursive; */
+        color: #666;
+    }
+    
+    .dropdown-item {
+        font-weight: bold;
+    }
+    
+    #nav_items {
+        transition: all 0.2s ease-in-out;
+        font-weight: bold;
+    }
+    
+    #nav_items:hover {
+        background-color: rgb(80, 59, 64);
+        border-radius: 2px;
+    }
+    
+    #bold {
+        font-weight: bold;
+    }
+    
+    #info {
+        padding: 8px;
+        border-radius: 3px;
+        position: absolute;
+        color: #069;
+        display: none;
+        font-size: 20px;
+    }
+    
+    #btnRegister {
+        background: #2ecc71;
+    }
+    
+    #navlogo {
+        border-radius: 20px;
+        border: 3px solid white;
+        /* animation: progress 2s linear infinite; */
+    }
+    
+    .footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: #161b22;
+        font-weight: bolder;
+        font-weight: 600;
+        color: white;
+        text-align: center;
+        height: 2.5rem;
+        text-align: center;
+        font-size: 15.5px;
+        padding-top: 19px;
+        padding-bottom: 4.3rem;
+    }
+    
+    #font {
+        font-weight: bold;
+    }
+    
+    .dropdown-item {
+        font-weight: bolder;
+    }
+    
+    #nav_items {
+        transition: all 0.2s ease-in-out;
+        font-weight: bold;
+    }
+    
+    #nav_items:hover {
+        background-color: rgb(80, 59, 64);
+        border-radius: 2px;
+    }
+    
+    .navbar-nav li:hover>ul.dropdown-menu {
+        display: block;
+    }
+    
+    .dropdown-submenu {
+        position: relative;
+    }
+    
+    .dropdown-submenu>.dropdown-menu {
+        top: 0;
+        left: 100%;
+        margin-top: -6px;
+    }
+    
+    .dropdown-menu>li>a:hover:after {
+        text-decoration: underline;
+        transform: rotate(-90deg);
+    }
+    
+    #btnLogin {
+        background: #34495e;
+    }
+    
+    #loginTable {
+        display: none;
+    }
+    
+    #preloader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #161b22;
+        z-index: 100;
+        /* animation: anim 5s infinite alternate; */
+    }
+    
+    #status {
+        margin-top: 17rem;
+        border: 3px solid white;
+        animation: beat .33s infinite alternate;
+    }
+    
+    @keyframes beat {
+        to {
+            transform: scale(1.4);
+        }
+    }
+    
+     ::-webkit-scrollbar {
+        width: 8px;
+    }
+    
+     ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+    
+     ::-webkit-scrollbar-thumb {
+        background: #58A6FF;
+    }
+    
+     ::-webkit-scrollbar-thumb:hover {
+        background: blueviolet;
+    }
+    
+    .dropdown-menu {
+        margin-top: 0;
+        font-weight: bolder;
+    }
+    
+    .dropdown-menu .dropdown-toggle::after {
+        vertical-align: middle;
+        border-left: 4px solid;
+        border-bottom: 4px solid transparent;
+        border-top: 4px solid transparent;
+        /* font-weight: bolder; */
+    }
+    
+    .dropdown-menu .dropdown .dropdown-menu {
+        left: 100%;
+        top: 0%;
+        margin: 0 20px;
+        border-width: 0;
+        /* font-weight: bolder; */
+    }
+    
+    .dropdown-menu .dropdown .dropdown-menu.left {
+        right: 100%;
+        left: auto;
+        /* font-weight: bolder; */
+    }
+    
+    .dropdown-menu>li a:hover,
+    .dropdown-menu>li.show {
+        background: blue;
+        color: white;
+    }
+    
+    .dropdown-menu>li.show>a {
+        color: white;
+        /* font-weight: bolder; */
+    }
+    
+    @media (min-width: 768px) {
+        .dropdown-menu .dropdown .dropdown-menu {
+            margin: 0;
+            border-width: 1px;
+            /* font-weight: bolder; */
+        }
+    }
+    
+    .dropdown-item {
+        font-weight: bold;
+    }
+    
+    @media all and (min-width: 992px) {
+        .dropdown-menu li {
+            position: relative;
+        }
+        .nav-item .submenu {
+            display: none;
+            position: absolute;
+            left: 100%;
+            top: -7px;
+        }
+        .nav-item .submenu-left {
+            right: 100%;
+            left: auto;
+        }
+        .dropdown-menu>li:hover {
+            background-color: #f1f1f1
+        }
+        .dropdown-menu>li:hover>.submenu {
+            display: block;
+        }
+    }
+    /* ============ desktop view .end// ============ */
+    /* ============ small devices ============ */
+    
+    @media (max-width: 991px) {
+        .dropdown-menu .dropdown-menu {
+            margin-left: 0.7rem;
+            margin-right: 0.7rem;
+            margin-bottom: .5rem;
+        }
+    }
+    
+    .dropdown-hover-all .dropdown-menu,
+    .dropdown-hover>.dropdown-menu.dropend {
+        margin-left: -1px !important
+    }
+    
+    #preloader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #161b22;
+        z-index: 100;
+        animation: beat .33s infinite alternate;
+        /* border: 3px solid white;s */
+        /* margin-top: 17rem; */
+    }
+    
+    #preloader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        /* right: 0s */
+        /* width: 100%;
+        height: 100%; */
+        /* z-index: 100; */
+        background-color: #161b22;
+    }
+    
+    #loader-img {
+        display: block;
+        position: relative;
+        left: 50%;
+        top: 50%;
+        width: 200px;
+        height: 200px;
+        margin: -100px 0 0 -100px;
+        z-index: 1001;
+        background-image: url('/bmsceloader.jpg');
+        background-repeat: no-repeat;
+        background-size: 50%;
+        background-position: center;
+        z-index: 1020;
+        border-radius: 10rem;
+        background-color: #161b22;
+    }
+    
+    #loader {
+        display: block;
+        position: relative;
+        left: 50%;
+        width: 200px;
+        height: 200px;
+        margin: -100px 0 0 -100px;
+        border-radius: 50%;
+        border: 3px solid transparent;
+        border-top-color: red;
+        /* -webkit-animation: spin 2s linear infinite; */
+        animation: spin 4s linear infinite;
+        z-index: 1001;
+        background-color: #161b22;
+    }
+    
+    #loader:before {
+        content: "";
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        right: 5px;
+        bottom: 5px;
+        border-radius: 50%;
+        border: 3px solid transparent;
+        border-top-color: blue;
+        /* -webkit-animation: spin 3s linear infinite; */
+        animation: spin 3s linear infinite;
+    }
+    
+    #loader:after {
+        content: "";
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        right: 15px;
+        bottom: 15px;
+        border-radius: 50%;
+        border: 3px solid transparent;
+        border-top-color: yellow;
+        /* -webkit-animation: spin 1.5s linear infinite; */
+        animation: spin 1.5s linear infinite;
+        background-color: #161b22;
+    }
+    
+    @-webkit-keyframes spin {
+        0% {
+            -webkit-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+        100% {
+            -webkit-transform: rotate(360deg);
+            -ms-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
+    }
+    
+    @keyframes spin {
+        0% {
+            -webkit-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+        100% {
+            -webkit-transform: rotate(360deg);
+            -ms-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
+    }
+    
+    .loader-section {
+        position: fixed;
+        top: 0;
+        width: 51%;
+        height: 100%;
+        background: #222;
+        z-index: 1000;
+        -webkit-transform: translateX(0);
+        -ms-transform: translateX(0);
+        transform: translateX(0)
+    }
+    
+    .loader-section.section-left {
+        left: 0
+    }
+    
+    .loader-section.section-right {
+        right: 0
+    }
+    
+    .panel_left {
+        -webkit-transform: translateX(-100%);
+        -ms-transform: translateX(-100%);
+        transform: translateX(-100%);
+        -webkit-transition: all .7s .3s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+        transition: all .7s .3s cubic-bezier(0.645, 0.045, 0.355, 1.000)
+    }
+    
+    .panel_right {
+        -webkit-transform: translateX(100%);
+        -ms-transform: translateX(100%);
+        transform: translateX(100%);
+        -webkit-transition: all .7s .3s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+        transition: all .7s .3s cubic-bezier(0.645, 0.045, 0.355, 1.000)
+    }
+    
+    .loaded-circle {
+        opacity: 0;
+        /* border-radius: 10rem; */
+        -webkit-transition: all .2s ease-out;
+        transition: all .4s ease-in;
+        background-color: #161b22;
+    }
+    
+    .loaded-img {
+        /* border-radius: 10rem; */
+        visibility: hidden;
+        /* /* -webkit-transform: translateY(-100%); */
+        /* -ms-transform: translateY(-100%); */
+        /* transform: translateY(-100%); */
+        -webkit-transition: all .3s 1s ease-out;
+        transition: all .3s 1s ease-in;
+        background-color: #161b22;
+    }
+</style>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top sticky-onscroll" id="main_navbar">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="homepage.html">
+            <img id="navlogo" src="bmsce.jpg" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+            <b style="color: white;" id="mybmsce"><b></b>SGPA CALCULATOR</b>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="homepage.html" id="nav_items"><b>HOME</b>
+                    </a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" style="color: white;">
+                        <b>SGPA CALCULATOR</b>
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" style="font-weight: bold;" href="sem1.html">I SEMESTER</a></li>
+                        <li><a class="dropdown-item" style="font-weight: bold;" href="sem2.html">II SEMESTER</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="dropdown-item dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                III SEMESTER
+                            </a>
+                            <ul class="dropdown-menu" style="font-weight: bold;">
+                                <li><a class="dropdown-item" href="sem3(3).html">CSE BRANCH</a></li>
+                                <li><a class="dropdown-item" href="sem3(3).html">ISE BRANCH</a></li>
+                                <li><a class="dropdown-item" href="sem3(3).html">ETC BRANCH</a></li>
+                                <li><a class="dropdown-item" href="sem3(10).html">ECE BRANCH</a></li>
+                                <li><a class="dropdown-item" href="sem3(10).html">EEE BRANCH</a></li>
+                                <li><a class="dropdown-item" href="sem3(10).html">EIE BRANCH</a></li>
+                                <li><a class="dropdown-item" href="sem3(10).html">BIOTECH BRANCH</a></li>
+                                <li><a class="dropdown-item" href="sem3(10).html">CIVIL BRANCH</a></li>
+                                <li><a class="dropdown-item" href="sem3(10).html">MEDICAL ELECTRONICS BRANCH</a></li>
+                                <li><a class="dropdown-item" href="sem3(10).html">IEM BRANCH</a></li>
+                                <li><a class="dropdown-item" href="sem3(10).html">CHEMICAL BRANCH</a></li>
+                                <li><a class="dropdown-item" href="sem3(10).html">MECHANICAL BRANCH</a></li>
+                                <li><a class="dropdown-item" href="sem3(10).html">AEROSPACE BRANCH</a></li>
+                                <li><a class="dropdown-item" href="aiml3.html">AI & ML BRANCH</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="dropdown-item dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                IV SEMESTER
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="sem(4).html">CSE BRANCH</a></li>
+                                <li><a class="dropdown-item" href="sem(4).html">ISE BRANCH</a></li>
+                                <li><a class="dropdown-item" href="sem(4).html">ETC BRANCH</a></li>
+                                <li><a class="dropdown-item" href="sem(10).html">ECE BRANCH</a></li>
+                                <li><a class="dropdown-item" href="sem4(10).html">EEE BRANCH</a></li>
+                                <li><a class="dropdown-item" href="sem4(10).html">EIE BRANCH</a></li>
+                                <li><a class="dropdown-item" href="sem4(10).html">BIOTECH BRANCH</a></li>
+                                <li><a class="dropdown-item" href="sem4(10).html">CIVIL BRANCH</a></li>
+                                <li><a class="dropdown-item" href="sem4(10).html">MEDICAL ELECTRONICS BRANCH</a></li>
+                                <li><a class="dropdown-item" href="sem4(10).html">IEM BRANCH</a></li>
+                                <li><a class="dropdown-item" href="sem4(10).html">CHEMICAL BRANCH</a></li>
+                                <li><a class="dropdown-item" href="sem4(10).html">MECHANICAL BRANCH</a></li>
+                                <li><a class="dropdown-item" href="sem4(10).html">AEROSPACE BRANCH</a></li>
+                                <li><a class="dropdown-item" href="sem4(4).html">AI & ML BRANCH</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="dropdown-item dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                V SEMESTER
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="sem5(13).html">CSE BRANCH</a></li>
+                                <li><a class="dropdown-item" href="sem5(13).html">ISE BRANCH</a></li>
+                                <li><a class="dropdown-item" href="sem5(13).html">ETC BRANCH</a></li>
+                                <li><a class="dropdown-item" href="sem5(13).html">ECE BRANCH</a></li>
+                                <li><a class="dropdown-item" href="sem5(13).html">EEE BRANCH</a></li>
+                                <li><a class="dropdown-item" href="sem5(13).html">EIE BRANCH</a></li>
+                                <li><a class="dropdown-item" href="sem5(13).html">BIOTECH BRANCH</a></li>
+                                <li><a class="dropdown-item" href="sem5(13).html">CIVIL BRANCH</a></li>
+                                <li><a class="dropdown-item" href="sem5(13).html">MEDICAL ELECTRONICS BRANCH</a></li>
+                                <li><a class="dropdown-item" href="sem5(13).html">IEM BRANCH</a></li>
+
+                                <li><a class="dropdown-item" href="sem5(13).html">MECHANICAL BRANCH</a></li>
+                                <li><a class="dropdown-item" href="sem5(13).html">AEROSPACE BRANCH</a></li>
+                                <li><a class="dropdown-item" href="sem5(13).html">AI & ML BRANCH</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="dropdown-item dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                VI SEMESTER
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="sem6(11).html">CSE BRANCH</a></li>
+                                <li><a class="dropdown-item" href="sem6(11).html">ISE BRANCH</a></li>
+                                <li><a class="dropdown-item" href="sem6(11).html">ETC BRANCH</a></li>
+                                <li><a class="dropdown-item" href="sem6(11).html">ECE BRANCH</a></li>
+                                <li><a class="dropdown-item" href="sem6(11).html">EEE BRANCH</a></li>
+                                <li><a class="dropdown-item" href="sem6(11).html">EIE BRANCH</a></li>
+
+                                <li><a class="dropdown-item" href="sem6(11).html">CIVIL BRANCH</a></li>
+                                <li><a class="dropdown-item" href="sem6(11).html">MEDICAL ELECTRONICS BRANCH</a></li>
+                                <li><a class="dropdown-item" href="sem6(11).html">IEM BRANCH</a></li>
+
+                                <li><a class="dropdown-item" href="sem6(11).html">MECHANICAL BRANCH</a></li>
+                                <li><a class="dropdown-item" href="sem6(11).html">AEROSPACE BRANCH</a></li>
+                                <li><a class="dropdown-item" href="aiml6.html">AI & ML BRANCH</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="dropdown-item dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                VII SEMESTER
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="sem7(9).html">CSE BRANCH</a></li>
+                                <li><a class="dropdown-item" href="sem7(9).html">ISE BRANCH</a></li>
+                                <li><a class="dropdown-item" href="sem7(9).html">ETC BRANCH</a></li>
+                                <li><a class="dropdown-item" href="sem7(9).html">ECE BRANCH</a></li>
+                                <li><a class="dropdown-item" href="sem7(9).html">EEE BRANCH</a></li>
+                                <li><a class="dropdown-item" href="sem7(9).html">EIE BRANCH</a></li>
+
+                                <!-- <li><a class="dropdown-item" href="sem7(9).html">CIVIL BRANCH</a></li> -->
+                                <li><a class="dropdown-item" href="sem7(9).html">MEDICAL ELECTRONICS BRANCH</a></li>
+                                <!-- <li><a class="dropdown-item" href="sem7(9).html">IEM BRANCH</a></li> -->
+
+                                <li><a class="dropdown-item" href="sem7(9).html">MECHANICAL BRANCH</a></li>
+                                <li><a class="dropdown-item" href="sem7(9).html">AEROSPACE BRANCH</a></li>
+                                <li><a class="dropdown-item" href="aiml7.html">AI & ML BRANCH</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="dropdown-item dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                VIII SEMESTER
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="sem8(10).html">CSE BRANCH</a></li>
+                                <li><a class="dropdown-item" href="sem8(10).html">ISE BRANCH</a></li>
+                                <li><a class="dropdown-item" href="sem8(10).html">ETC BRANCH</a></li>
+                                <li><a class="dropdown-item" href="sem8(10).html">ECE BRANCH</a></li>
+                                <li><a class="dropdown-item" href="sem8(10).html">EEE BRANCH</a></li>
+                                <li><a class="dropdown-item" href="sem8(10).html">EIE BRANCH</a></li>
+
+                                <!-- <li><a class="dropdown-item" href="sem7(9).html">CIVIL BRANCH</a></li> -->
+                                <li><a class="dropdown-item" href="sem8(10).html">MEDICAL ELECTRONICS BRANCH</a></li>
+                                <!-- <li><a class="dropdown-item" href="sem7(9).html">IEM BRANCH</a></li> -->
+
+                                <li><a class="dropdown-item" href="sem8(10).html">MECHANICAL BRANCH</a></li>
+                                <li><a class="dropdown-item" href="sem8(10).html">AEROSPACE BRANCH</a></li>
+                                <li><a class="dropdown-item" href="sem8(10).html">AI & ML BRANCH</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" style="color: white;">
+                        <b> CGPA CALCULATOR</b>
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="csecgpa.html">CSE BRANCH</a></li>
+                        <li><a class="dropdown-item" href="isecgpa.html">ISE BRANCH</a></li>
+                        <li><a class="dropdown-item" href="etccgpa.html">ETC BRANCH</a></li>
+                        <li><a class="dropdown-item" href="ececgpa.html">ECE BRANCH</a></li>
+                        <li><a class="dropdown-item" href="eeecgpa.html">EEE BRANCH</a></li>
+                        <li><a class="dropdown-item" href="eiecgpa.html">EIE BRANCH</a></li>
+                        <li><a class="dropdown-item" href="mechcgpa.html">MECHANICAL BRANCH</a></li>
+                        <li><a class="dropdown-item" href="mecgpa.html">MEDICAL ELECTRONICS BRANCH</a></li>
+                        <li><a class="dropdown-item" href="iemcgpa.html">IEM BRANCH</a></li>
+                        <li><a class="dropdown-item" href="chemcgpa.html">CHEMICAL BRANCH</a></li>
+                        <li><a class="dropdown-item" href="civilcgpa.html">CIVIL BRANCH</a></li>
+                        <li><a class="dropdown-item" href="biocgpa.html">BIOTECH BRANCH</a></li>
+                        <li><a class="dropdown-item" href="aimlcgpa.html">AI AND ML BRANCH</a></li>
+                        <li><a class="dropdown-item" href="aecgpa.html">AEROSPACE BRANCH</a></li>
+
+
+
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" style="color: white;">
+                        <b>CGPA TO %</b>
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="cgpatoper.html">OPEN CALCULATOR </a></li>
+
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" style="color: white;">
+                        <b>RESULTS</b>
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="https://results.bmsce.in/">OPEN LINK </a></li>
+
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="contactme.html" id="nav_items" style="color: #61a0ff;"><b>CONTACT ME</b>
+                    </a>
+                </li>
+                <li> <button class="btn btn-danger" style="margin-left: 0rem;font-weight: bolder;border: 1px solid white;" onclick="location.href='index.html'"><img src="/images/logout.jpg" style="height: 20px; height: 20px;border-radius: 10rem;border: 1px solid white;margin-bottom: 0.2rem;"> LOG OUT</button></li>
+
+            </ul>
+            </li>
+            </ul>
+
+        </div>
+    </div>
+</nav>
+<div id="preloader">
+    <div id="loader-img">
+        <div id="loader" style="border-radius: 10rem;"></div>
+    </div>
+    <!-- <div id="panel_left" class='loader-section section-left'></div> -->
+    <!-- <div id="panel_right" class='loader-section section-right'></div> -->
+</div>
+
+<body>
+    <div id="main">
+        <section class="contact" id="contact" style="font-size: 18px;color: white;margin-bottom: 3rem;">
+            <div class="max-width ">
+                <h2 class="title ">
+                    <B style="color: #09f845;">CONTACT ME</B><br>
+                    <img src="kar.png" alt="" id="coderimg">
+                </h2>
+                <div class="contact-content ">
+                    <div class="column left ">
+                        <!-- <div class="text ">
+                    <b>GET IN TOUCH</b></div> -->
+                        <p style="font-weight: bolder;color: white;">
+                            Hey Guys! You can contact me for any sort of reason be it to explore technology or any issue with the Website.I'm Available 24/7..</p>
+                        <div class="icons ">
+                            <div class="row ">
+                                <i class="fa fa-user-circle-o" style="width:max-content;  color:crimson;font-size: larger;"> </i>
+                                <div class="info ">
+                                    <div class="head ">
+                                        <b>NAME :</b></div>
+                                    <div class="sub-title " id="new">
+                                        KARTHIK.S</div>
+                                </div>
+                            </div>
+                            <div class="row ">
+                                <i class="fa fa-envelope" style="width:max-content;  color:crimson;font-size: larger;"> </i>
+                                <div class="info ">
+                                    <div class="head ">
+                                        <b>EMAIL :</b></div>
+                                    <div class="sub-title " id="new">
+                                        karthiks.cs19@bmsce.ac.in</div>
+                                </div>
+                            </div>
+                            <div class="row ">
+                                <i class="fa fa-link" style="width:max-content;  color:crimson;font-size: larger;"> </i>
+                                <div class="info ">
+                                    <div class="head ">
+                                        <b>LINKED PROFILE :</b></div>
+                                    <div class="sub-title " id="new">
+                                        <link rel="stylesheet" href="https://bit.ly/2XMDijq"><a href=" https://bit.ly/2XMDijq " style="color: #00ffd5;"> https://bit.ly/2XMDijq </a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column right">
+
+                        <div class="text"><b><i class="fas fa-comment-dots" style=" color: crimson;"></i> <u style=" text-decoration:none;font-size: larger;color: white;">MESSAGE ME</u></b></div>
+
+                        <form action="#" method="post" autocomplete="off" id="registrationTable">
+                            <div class="fields">
+                                <div class="field name">
+                                    <input type="text" placeholder="Name" required class="form-control" name="Name" id="txtUsername">
+                                </div>
+                                <div class="field email">
+                                    <input type="email" placeholder="Email" name="Email" required class="form-control" id="txtEmail">
+                                </div>
+                            </div>
+                            <div class="field">
+                                <input type="text" placeholder="Subject/Title" required class="form-control" name="subject" id="txtPassword">
+                            </div>
+                            <div class="field textarea" class="glow-on-hover">
+                                <textarea cols="30" rows="10" placeholder="Elaborated Message.." name="message" required class="form-control" class="glow-on-hover" id="message"></textarea>
+                            </div>
+                            <div>
+
+                                <button class="glow-on-hover" name="submit" id="btnRegister"><b><i class="fa fa-paper-plane" style="width:max-content; padding:8px; color: #61a0ff;font-size: large; " > </i ><b style="font-size: large;">SEND MESSAGE</b></button>
+                                <span id="info">Hata</span>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+        </section>
+        </div>
+        <!-- <div id="main"> -->
+
+        <!-- <table id="registrationTable">
+            <tr>
+                <td>
+                    <h2>Registration Form</h2>
+                </td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="Your Name" id="txtUsername"></td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="Email" id="txtEmail"></td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="Subject" id="txtPassword"></td>
+            </tr>
+
+
+
+
+            <tr>
+                <span id="info">Hata</span>
+
+                <td>
+                    <button id="btnRegister">Register</button>
+                    <button id="btnLogin">Login</button>
+                </td>
+            </tr>
+        </table> -->
+        <!-- </div> -->
+
+        <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
+        <script>
+            // Initialize Firebase
+            var firebaseConfig = {
+                apiKey: "AIzaSyAfnGkKpNHOzpEMUgjtAa6LAq-uKiem2EU",
+                authDomain: "last-f6d25.firebaseapp.com",
+                databaseURL: "https://last-f6d25-default-rtdb.firebaseio.com",
+                projectId: "last-f6d25",
+                storageBucket: "last-f6d25.appspot.com",
+                messagingSenderId: "848558406159",
+                appId: "1:848558406159:web:e37fcfd24876bc2701c17a",
+                measurementId: "G-KZ25R3PQ60"
+            };
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+        </script>
+</body>
+<script>
+    var txtUsername = document.getElementById('txtUsername');
+    var txtEmail = document.getElementById('txtEmail');
+    var btnRegister = document.getElementById('btnRegister');
+    var btnLogin = document.getElementById('btnLogin');
+    var registrationTable = document.getElementById('registrationTable');
+    var loginTable = document.getElementById('loginTable');
+    var info = document.getElementById('info');
+
+    //Firebase Config
+    var firebaseRef = firebase.database().ref();
+
+    //Email Validation
+    function validateEmail(email) {
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(email);
+    }
+
+
+    //Register Button Click Event
+    btnRegister.addEventListener('click', function(e) {
+        e.preventDefault();
+        if (txtUsername.value == '' || txtEmail.value == '' || txtPassword.value == '') {
+            info.className = '';
+            info.innerHTML = 'Please fill the form!';
+            info.style.color = '#e74c3c';
+            info.style.display = 'block';
+            info.className += 'animated shake';
+        } else {
+            if (txtUsername.value.length < 3) {
+                info.className = '';
+                info.innerHTML = 'Username must contain at least 3 character!';
+                info.style.color = '#e74c3c';
+                info.style.display = 'block';
+                info.className += 'animated shake';
+            } else {
+                if (!validateEmail(txtEmail.value)) {
+                    info.className = '';
+                    info.innerHTML = 'Invalid Email!';
+                    info.style.color = '#e74c3c';
+                    info.style.display = 'block';
+                    info.className += 'animated shake';
+                } else {
+                    if (txtPassword.value.length < 0) {
+                        info.className = '';
+                        // info.innerHTML = 'Password must contain at least 6 character!';
+                        info.style.color = '#e74c3c';
+                        info.style.display = 'block';
+                        info.className += 'animated shake';
+                    } else {
+                        info.innerHTML = 'Your Message sent successfully!';
+                        info.className += 'animated bounce';
+                        info.style.color = '#2ecc71';
+                        info.style.display = 'block';
+                        firebaseRef.child('Users').child('Name').push(txtUsername.value);
+                        // firebaseRef.child('Users').child('Username').push(txtUsername.value);
+                        firebaseRef.child('Users').child('Email').push(txtEmail.value);
+                        firebaseRef.child('Users').child('Subject').push(txtPassword.value);
+                        firebaseRef.child('Users').child('Message').push(message.value);
+                        txtUsername.value = '';
+                        txtEmail.value = '';
+                        txtPassword.value = '';
+                        message.value = '';
+                        txtUsername.focus();
+                    }
+                }
+            }
+
+        }
+
+    });
+</script>
+<div class="footer">
+    <p class="m-0 text-center" style="color: #f1f1f1;"></p> <b style="font-size: larger;color: white;">&copy</b> Copyright 2021. All Rights Reserved.<br><span class="myname">Created By <a href="contactme.html" style="color: hsl(197, 100%, 55%);font-size: 14px;"><b> Karthik.S </b></a> (UG BMSCE)</p></span>
+</div>
+<a href="whatsapp://send?text=https://bmscesgpacalculator.netlify.app/" class="float">
+    <div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path
+            d="M20.1 3.9C17.9 1.7 15 .5 12 .5 5.8.5.7 5.6.7 11.9c0 2 .5 3.9 1.5 5.6L.6 23.4l6-1.6c1.6.9 3.5 1.3 5.4 1.3 6.3 0 11.4-5.1 11.4-11.4-.1-2.8-1.2-5.7-3.3-7.8zM12 21.4c-1.7 0-3.3-.5-4.8-1.3l-.4-.2-3.5 1 1-3.4L4 17c-1-1.5-1.4-3.2-1.4-5.1 0-5.2 4.2-9.4 9.4-9.4 2.5 0 4.9 1 6.7 2.8 1.8 1.8 2.8 4.2 2.8 6.7-.1 5.2-4.3 9.4-9.5 9.4zm5.1-7.1c-.3-.1-1.7-.9-1.9-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.1-.2.2-.3.2-.6.1s-1.2-.5-2.3-1.4c-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6s.3-.3.4-.5c.2-.1.3-.3.4-.5.1-.2 0-.4 0-.5C10 9 9.3 7.6 9 7c-.1-.4-.4-.3-.5-.3h-.6s-.4.1-.7.3c-.3.3-1 1-1 2.4s1 2.8 1.1 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.3-.3-.4-.6-.5z" />
+    </svg>
+    </div>
+</a>
+<script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-analytics.js"></script>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script src="https://code.jquery.com/jquery-2.1.3.min.js" type="d3cf5652f3ceaab04f758bdc-text/javascript"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" type="d3cf5652f3ceaab04f758bdc-text/javascript"></script>
+
+<script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js" data-cf-settings="d3cf5652f3ceaab04f758bdc-|49" defer=""></script>
+
+</html>

@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <meta name="description" content="CALCULATE THE SGPA, CGPA AND PERCENTAGE OF YOUR BMSCE RESULTS QUICKLY HERE.">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/css/contact-me.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>BMSCE SGPA CALCULATOR</title>
+    <link rel="icon" href="/assets/images/title-image.png" type="image/icon type">
+    <script>
+        document.onreadystatechange = function() {
+            if (document.readyState === "complete") {
+                $("#panel_left").addClass("panel_left");
+                $("#panel_right").addClass("panel_right");
+                $("#loader").addClass("loaded-circle");
+                $("#loader-img").addClass("loaded-img");
+                $("#preloader").addClass("loaded-img");
+            }
+        }
+    </script>
+    <!-- <script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-app.js"></script> -->
+    <script>
+        function bootnavbar(el = 'main_navbar', options) {
+            let defaultOption = {
+
+            }
+
+            options = {...defaultOption,
+                ...options
+            }
+
+
+            var isMobile = {
+                Android: function() {
+                    return navigator.userAgent.match(/Android/i);
+                },
+                BlackBerry: function() {
+                    return navigator.userAgent.match(/BlackBerry/i);
+                },
+                iOS: function() {
+                    return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+                },
+                Opera: function() {
+                    return navigator.userAgent.match(/Opera Mini/i);
+                },
+                Windows: function() {
+                    return navigator.userAgent.match(/IEMobile/i) || navigator.userAgent.match(/WPDesktop/i);
+                },
+                any: function() {
+                    return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+                }
+            };
+
+            this.init = function() {
+                var dropdowns = document.getElementById(el).getElementsByClassName("dropdown");
+                console.log(dropdowns);
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var dropdown = dropdowns.item(i);
+                    dropdown.addEventListener("mouseover", function() {
+                        this.classList.add('show');
+                        this.getElementsByClassName("dropdown-menu")[0].classList.add('show');
+                    });
+                    dropdown.addEventListener("mouseout", function() {
+                        this.classList.remove('show');
+                        this.getElementsByClassName("dropdown-menu")[0].classList.remove('show');
+                    });
+                }
+                // document.getElementById(el).getElementsByClassName("dropdown").forEach(dropdown => {
+                //     dropdown.addEventListener("mouseover", function(){
+                //         dropdown.classList.add('show');
+                //         dropdown.getElementsByClassName("dropdown-menu")[0].classList.add('show');
+                //     });
+                //     dropdown.addEventListener("mouseout", function(){
+                //         dropdown.classList.remove('show');
+                //         dropdown.getElementsByClassName("dropdown-menu")[0].classList.remove('show');
+                //     });
+                // });
+            }
+
+            this.init();
+        }
+    </script>
+</head>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top sticky-onscroll" id="main_navbar">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="homepage1styear.html">
+            <img id="navlogo" src="bmsce.jpg" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+            <b style="color: white;" id="mybmsce"><b></b>MY BMSCE</b>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item  active">
+                    <a class="nav-link" href="/nav-items/homepage.html" id="nav_items"><b>HOME</b>
+                    </a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" style="color: white;">
+                        <b>NOTES</b>
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" style="font-weight: bold;" href="pc-notes.html">PHYSICS CYCLE</a></li>
+                        <li><a class="dropdown-item" style="font-weight: bold;" href="chemc-notes.html">CHEMISTRY CYCLE</a></li>
+
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" style="color: white;">
+                        <b>QUESTION PAPERS</b>
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" style="font-weight: bold;" href="pc-qps.html">PHYSICS CYCLE</a></li>
+                        <li><a class="dropdown-item" style="font-weight: bold;" href="chemc-qps.html">CHEMISTRY CYCLE</a></li>
+
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" style="color: white;">
+                        <b>TEXTBOOKS</b>
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item " href="textbook(pc).html">PHYSICS CYCLE</a></li>
+                        <li><a class="dropdown-item " style="font-weight: bold;" href="textbook(cc).html">CHEMISTRY CYCLE</a></li>
+
+                    </ul>
+                </li>
+
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" style="color: white;">
+                        <b>CONTRIBUTE</b>
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="contribute.html">BE A SAVIOUR </a></li>
+
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" style="color: white;">
+                        <b>SYLLABUS</b>
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="https://bmsce.ac.in/Syllabus/FIRST%20YEAR%20SYLLABUS/FIRST%20YEAR/UG%20First%20Year%20Syllabus%202020-21.pdf">MAIN SYLLABUS </a></li>
+                        <li><a class="dropdown-item" href="https://bmsce.ac.in/Syllabus/FIRST%20YEAR%20SYLLABUS/Kannada%20Syllabus/Kannada%20Syllabus%202020-21.pdf">KANNADA SYLLABUS </a></li>
+
+                    </ul>
+                </li>
+
+                <li class="nav-item disabled">
+                    <a class="nav-link disabled" href="contactme(1styr).html" id="nav_items" style="color: #84abff;"><b>CONTACT ME</b>
+                        </a>
+                </li>
+
+                <li> <button class="btn btn-danger" style="margin-left: 0rem;font-weight: bolder;border: 1px solid white;" onclick="location.href='index.html'"><img src="/images/logout.jpg" style="height: 20px; height: 20px;border-radius: 10rem;border: 1px solid white;margin-bottom: 0.2rem;"> <span>LOG OUT</span>
+                    <div id="main_container" style="display:none;">
+                      </button></li>
+
+            </ul>
+            </li>
+            </ul>
+
+        </div>
+    </div>
+</nav>
+<div id="preloader">
+    <div id="loader-img">
+        <div id="loader" style="border-radius: 10rem;"></div>
+    </div>
+    <!-- <div id="panel_left" class='loader-section section-left'></div> -->
+    <!-- <div id="panel_right" class='loader-section section-right'></div> -->
+</div>
+
+<body>
+    <div id="main">
+        <section class="contact" id="contact" style="font-size: 18px;color: white;margin-bottom: 3rem;">
+            <div class="max-width ">
+                <h2 class="title ">
+                    <B style="color: #09f845;">CONTACT ME</B><br>
+                    <img src="/assets/images/contact-pic.png" alt="" id="coderimg">
+                </h2>
+                <div class="contact-content ">
+                    <div class="column left ">
+                        <!-- <div class="text ">
+                    <b>GET IN TOUCH</b></div> -->
+                        <p style="font-weight: bolder;color: white;">
+                            Hey Guys! You can contact me for any sort of reason be it to explore technology or any issue with the Website.I'm Available 24/7..</p>
+                        <div class="icons ">
+                            <div class="row ">
+                                <i class="fa fa-user-circle-o" style="width:max-content;  color:crimson;font-size: larger;"> </i>
+                                <div class="info ">
+                                    <div class="head ">
+                                        <b>NAME :</b></div>
+                                    <div class="sub-title " id="new">
+                                        KARTHIK.S</div>
+                                </div>
+                            </div>
+                            <div class="row ">
+                                <i class="fa fa-envelope" style="width:max-content;  color:crimson;font-size: larger;"> </i>
+                                <div class="info ">
+                                    <div class="head ">
+                                        <b>EMAIL :</b></div>
+                                    <div class="sub-title " id="new">
+                                        karthiks.cs19@bmsce.ac.in</div>
+                                </div>
+                            </div>
+                            <div class="row ">
+                                <i class="fa fa-link" style="width:max-content;  color:crimson;font-size: larger;"> </i>
+                                <div class="info ">
+                                    <div class="head ">
+                                        <b>LINKED PROFILE :</b></div>
+                                    <div class="sub-title " id="new">
+                                        <link rel="stylesheet" href="https://bit.ly/2XMDijq"><a href=" https://bit.ly/2XMDijq " style="color: #00ffd5;"> https://bit.ly/2XMDijq </a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column right">
+
+                        <div class="text"><b><i class="fas fa-comment-dots" style=" color: crimson;"></i> <u style=" text-decoration:none;font-size: larger;color: white;">MESSAGE ME</u></b></div>
+
+                        <form action="#" method="post" autocomplete="off" id="registrationTable">
+                            <div class="fields">
+                                <div class="field name">
+                                    <input type="text" placeholder="Name" required class="form-control" name="name" id="name">
+                                </div>
+                                <div class="field email">
+                                    <input type="email" placeholder="Email" name="email" required class="form-control" id="email">
+                                </div>
+                            </div>
+                            <div class="field">
+                                <input type="text" placeholder="Subject/Title" required class="form-control" name="subject" id="subject">
+                            </div>
+                            <div class="field textarea" class="glow-on-hover">
+                                <textarea cols="30" rows="10" placeholder="Elaborated Message.." name="message" required class="form-control" class="glow-on-hover" id="message"></textarea>
+                            </div>
+                            <div>
+
+                                <button class="glow-on-hover" name="submit" id="btnRegister"><b><i class="fa fa-paper-plane" style="width:max-content; padding:8px; color: #61a0ff;font-size: large; " > </i ><b style="font-size: large;">SEND MESSAGE</b></button>
+                                <span id="info">Hata</span>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+        </section>
+        </div>
+
+        <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
+
+        <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-firestore.js"></script>
+
+        <script>
+            // Initialize Firebase
+            var firebaseConfig = {
+                apiKey: "AIzaSyCpcjpxkweTw7EasJ9n--ohfTrz629HsXY",
+                authDomain: "bmsce-sgpa-calculator-e2854.firebaseapp.com",
+                projectId: "bmsce-sgpa-calculator-e2854",
+                storageBucket: "bmsce-sgpa-calculator-e2854.appspot.com",
+                messagingSenderId: "1057810286679",
+                appId: "1:1057810286679:web:e471bcd883b6e1a750fb12",
+                measurementId: "G-7PH1CRW089"
+            };
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+            const db = firebase.firestore();
+            db.settings({
+                timestampsInSnapshots: true
+            });
+        </script>
+</body>
+<script>
+    const form = document.querySelector('#registrationTable');
+    var registrationTable = document.getElementById('registrationTable');
+    var name = document.getElementById("name").value;
+    var email = document.getElementById("email").value;
+    var subject = document.getElementById("subject").value;
+    var message = document.getElementById("message").value;
+
+
+    //Firebase Config
+
+
+    //Email Validation
+    // function validateEmail(email) {
+    //     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    //     return re.test(email);
+    // }
+
+    function renderCafe(doc) {
+        let li = document.createElement('li');
+        let name = document.createElement('span');
+        let email = document.createElement('span');
+        let subject = document.createElement('span');
+        let message = document.createElement('span');
+        li.setAttribute('data-id', doc.id);
+        name.textContent = doc.data().name;
+        email.textContent = doc.data().email;
+        subject.textContent = doc.data().subject;
+        message.textContent = doc.data().message;
+
+        li.appendChild(name);
+        li.appendChild(email);
+        li.appendChild(subject);
+        li.appendChild(message);
+
+
+    }
+
+    // getting data
+    db.collection('CONTACTS').get().then(snapshot => {
+        snapshot.docs.forEach(doc => {
+            renderCafe(doc);
+        });
+    });
+
+    // saving data
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        db.collection('CONTACTS').add({
+            NAME: form.name.value,
+            EMAIL: form.email.value,
+            SUBJECT: form.subject.value,
+            MESSAGE: form.message.value,
+
+        });
+
+        info.innerHTML = 'Your Message sent successfully!';
+        info.className += 'animated bounce';
+        info.style.color = '#2ecc71';
+        info.style.display = 'block';
+        form.name.value = '';
+        form.email.value = '';
+        form.subject.value = '';
+        form.message.value = '';
+
+    });
+</script>
+<div id="wrapper">
+
+    <div id="header">
+    </div>
+    <!-- #header -->
+
+    <div id="content">
+    </div>
+    <!-- #content -->
+
+
+    <div id="footer"><b><i class="fa fa-copyright" aria-hidden="true"></i></b> Copyright
+        <script>
+            document.write(new Date().getFullYear())
+        </script>. All Rights Reserved <br>Created By <a href="/nav-items/contactme.html" style="color: hsl(197, 100%, 55%);font-size: 15px;"><b> Karthik.S</b></a> (UG CSE BMSCE)</p>
+
+    </div>
+    <!-- #footer -->
+
+</div>
+<a href="whatsapp://send?text=https://bmscesgpacalculator.netlify.app/" class="float">
+    <div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path
+            d="M20.1 3.9C17.9 1.7 15 .5 12 .5 5.8.5.7 5.6.7 11.9c0 2 .5 3.9 1.5 5.6L.6 23.4l6-1.6c1.6.9 3.5 1.3 5.4 1.3 6.3 0 11.4-5.1 11.4-11.4-.1-2.8-1.2-5.7-3.3-7.8zM12 21.4c-1.7 0-3.3-.5-4.8-1.3l-.4-.2-3.5 1 1-3.4L4 17c-1-1.5-1.4-3.2-1.4-5.1 0-5.2 4.2-9.4 9.4-9.4 2.5 0 4.9 1 6.7 2.8 1.8 1.8 2.8 4.2 2.8 6.7-.1 5.2-4.3 9.4-9.5 9.4zm5.1-7.1c-.3-.1-1.7-.9-1.9-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.1-.2.2-.3.2-.6.1s-1.2-.5-2.3-1.4c-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6s.3-.3.4-.5c.2-.1.3-.3.4-.5.1-.2 0-.4 0-.5C10 9 9.3 7.6 9 7c-.1-.4-.4-.3-.5-.3h-.6s-.4.1-.7.3c-.3.3-1 1-1 2.4s1 2.8 1.1 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.3-.3-.4-.6-.5z" />
+    </svg>
+    </div>
+</a>
+<script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase.js"></script>
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-analytics.js"></script>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script src="https://code.jquery.com/jquery-2.1.3.min.js" type="d3cf5652f3ceaab04f758bdc-text/javascript"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" type="d3cf5652f3ceaab04f758bdc-text/javascript"></script>
+<script>
+    var fireBase = fireBase || firebase;
+    var hasInit = false;
+    var firebaseConfig = {
+        apiKey: "AIzaSyCpcjpxkweTw7EasJ9n--ohfTrz629HsXY",
+        authDomain: "bmsce-sgpa-calculator-e2854.firebaseapp.com",
+        projectId: "bmsce-sgpa-calculator-e2854",
+        storageBucket: "bmsce-sgpa-calculator-e2854.appspot.com",
+        messagingSenderId: "1057810286679",
+        appId: "1:1057810286679:web:e471bcd883b6e1a750fb12",
+        measurementId: "G-7PH1CRW089"
+
+
+
+    };
+    // Initialize Firebase
+
+    if (!hasInit) {
+        firebase.initializeApp(firebaseConfig);
+        hasInit = true;
+    }
+</script>
+<script>
+    var mainApp = {};
+    (function() {
+        var mainContainer = document.getElementById("main_container");
+
+        var logtout = function() {
+            firebase.auth().signOut().then(function() {
+                console.log('success');
+                window.location.replace("index.html");
+            }, function() {})
+        }
+
+        var init = function() {
+            firebase.auth().onAuthStateChanged(function(user) {
+                if (user) {
+                    // User is signed in.
+                    console.log("stay");
+                    mainContainer.style.display = "";
+                } else {
+                    // No user is signed in.
+                    mainContainer.style.display = "none";
+                    console.log("redirect");
+                    window.location.replace("index.html");
+                }
+            });
+        }
+
+        init();
+
+        mainApp.logout = logtout;
+    })();
+</script>
+<script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js" data-cf-settings="d3cf5652f3ceaab04f758bdc-|49" defer=""></script>
+
+</html>
