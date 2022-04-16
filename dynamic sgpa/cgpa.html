@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+
+    <title> BMSCE SGPA / CGPA CALCULATOR </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+
+
+    <meta name="description" content="BMSCE SGPA, CGPA , PERCENTAGE CALCULATOR">
+
+    <meta name="keywords" content="BMSCE SGPA, CGPA, PERCENTAGE CALCULATOR" />
+    <meta name="author" content="KARTHIK S">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    </script>
+    <script type="text/javascript">
+        function test() {
+            alert("Working");
+        }
+        var total;
+        var CGPA;
+        var totCre;
+        var totSubsol;
+        var Acre = [];
+        var ASGPA = [];
+        var ASol = [];
+
+        function showMarks() {
+            total = document.getElementById("total").value;
+            //alert(total);
+            addInput('dynamicInput', total);
+            document.getElementById("Step1").style.display = "none";
+            document.getElementById("Step2").style.display = "block";
+            var elmnt = document.getElementById("Step2");
+            elmnt.scrollIntoView();
+        }
+
+        function addInput(divName, counter) {
+            for (i = 1; i <= counter; i++) {
+                //var nid = id;
+                var cid = `cre${i}`;
+                var sid = `sgp${i}`;
+                var newdiv = document.createElement('div');
+                newdiv.innerHTML = `<div class='row'><div class='col-25'><label> Credit of Sem - ${i} </label></div><div class='col-75'> <input type='text' id='${cid}' > </div> </div>
+        <div class='row'><div class='col-25'><label> SGPA of Sem - ${i} </label></div><div class='col-75'> <input type='text' id='${sid}' > </div> </div>
+        <hr/>`;
+                document.getElementById(divName).appendChild(newdiv);
+                ////console.log(i);
+            }
+        }
+
+        function getValue() {
+            var tempTotal = total;
+            for (i = 1; i <= tempTotal; i++) {
+                var credid = document.getElementById(`cre${i}`).value;
+                Acre.push(credid);
+                var sgpaid = document.getElementById(`sgp${i}`).value;
+                ASGPA.push(sgpaid);
+
+
+                //console.log("Test");
+                //console.log(i);
+                //console.log("SGPA ID: " + sgpaid);
+                //console.log("Credit ID: " + credid);
+
+                //console.log("Array");
+                //console.log(Acre);
+                //console.log(ASGPA);
+
+            }
+        }
+
+        function CalSubsol() {
+            for (i = 0; i < total; i++) {
+                ASol[i] = parseFloat(Acre[i]) * parseFloat(ASGPA[i]);
+            }
+            //console.log("CalSubsol :" + ASol);
+        }
+
+        function CalTotCre() {
+            var temtotcre = 0;
+            for (i = 0; i < total; i++) {
+                temtotcre = temtotcre + parseFloat(Acre[i]);
+            }
+            //console.log("In CalTotCre Total Credit: " + temtotcre);
+            return temtotcre;
+        }
+
+        function CalTotSubsol() {
+            var temptotsubsol = 0;
+            for (i = 0; i < total; i++) {
+                temptotsubsol = temptotsubsol + parseFloat(ASol[i]);
+            }
+            return temptotsubsol;
+            //console.log("In CalTotSubsol Addition of subsol: " + temptotsubsol);
+        }
+
+        function DisCGPA(i) {
+            var newdiv = document.createElement('div');
+            newdiv.innerHTML = `Your CGPA is <big>${i}</big> `;
+            document.getElementById("CGPAResult").appendChild(newdiv);
+        }
+
+        function DisTable(i) {
+            var temp = i + 1;
+            var table = document.getElementById("CGPATable");
+            var row = table.insertRow(temp);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(3);
+            cell1.innerHTML = "Sem " + temp;
+            cell2.innerHTML = ASGPA[i];
+            cell3.innerHTML = Acre[i];
+            cell4.innerHTML = ASol[i];
+        }
+
+        function CalTotSGPA() {
+            var temptotSGPA = 0;
+            for (i = 0; i < total; i++) {
+                temptotSGPA = temptotSGPA + parseFloat(ASGPA[i]);
+            }
+            //console.log("In CalTOtSGPA total SGPA is: " + temptotSGPA);
+            return temptotSGPA;
+        }
+
+        function DisTabTotal(i) {
+            temp = parseInt(i) + 1;
+            var table = document.getElementById("CGPATable");
+            var row = table.insertRow(temp);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(3);
+            cell1.innerHTML = "Total";
+            cell2.innerHTML = CalTotSGPA();
+            cell3.innerHTML = totCre;
+            cell4.innerHTML = totSubsol;
+        }
+
+        function DisSGPATotal() {
+            var newdiv = document.createElement('div');
+            newdiv.innerHTML = `Thus, CGPA = ${totSubsol} / ${totCre} =  ${CGPA}`;
+            document.getElementById("FinalCGPA").appendChild(newdiv);
+        }
+
+        function calculate() {
+            getValue();
+            CalSubsol();
+            totCre = CalTotCre();
+            totSubsol = CalTotSubsol();
+            CGPA = (totSubsol / totCre).toFixed(4);
+            //console.log("CGPA is :" + CGPA);
+            DisCGPA(CGPA);
+            for (i = 0; i < total; i++) {
+                DisTable(i);
+            }
+            DisTabTotal(total);
+            DisSGPATotal()
+            document.getElementById("Step2").style.display = "none";
+            document.getElementById("Step3").style.display = "block";
+            var elmnt = document.getElementById("Step3");
+            elmnt.scrollIntoView();
+        }
+
+        function WhatsappShare() {
+            var url = window.location.href;
+            var api = "https://api.whatsapp.com/send?text=Hi,%20Buddy%20I%20found%20this%20Usefull%20Website%20named%20Future%20Vision%20BIE,%20One%20Stop%20Study%20Repository%20for%20VTU%20Students%0D%0ALink:"
+            var both = api + url;
+            ////console.log(both);
+            window.open(both, "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400");
+        }
+
+        function ClearData() {
+            var okToRefresh = confirm("Do you really want to Clear the data?");
+            if (okToRefresh) {
+                setTimeout("location.reload(true);", 150);
+                var elmnt = document.getElementById("Step1");
+                elmnt.scrollIntoView();
+            }
+        }
+    </script>
+
+</head>
+
+<!-- SGPA SCRIPT CODING -->
+
+<script type="text/javascript">
+    function test() {
+        alert("Working");
+    }
+    var total_sgpa;
+    var SGPA;
+    var Asco_sgpa = [];
+    var Acre_sgpa = [];
+    var Atot_sgpa = [];
+    var Aper_sgpa = [];
+    var Agrd_sgpa = [];
+    var ASol_sgpa = [];
+    var course_sgpa = [];
+
+    function showMarks_sgpa() {
+        total_sgpa = document.getElementById("total_sgpa").value;
+        //alert(total);
+        addInput('dynamicInput_sgpa', total_sgpa);
+        document.getElementById("Step1_sgpa").style.display = "none";
+        document.getElementById("Step2_sgpa").style.display = "block";
+        var elmnt_sgpa = document.getElementById("Step2_sgpa");
+        elmnt_sgpa.scrollIntoView();
+    }
+
+    function addInput_sgpa(divName_sgpa, counter) {
+        for (i = 1; i <= counter; i++) {
+            //var nid = id;
+            var courseid_sgpa = `course${i}`;
+            var sid_sgpa = `sub${i}`;
+            var tid_sgpa = `tot${i}`;
+            var cid_sgpa = `cre${i}`;
+            var newdiv_sgpa = document.createElement('div');
+            newdiv_sgpa.innerHTML = `<div class='row'><div class='col-25'><label> COURSE NAME - ${i} </label></div><div class='col-75'> <input type='text' id='${courseid_sgpa}' > </div> </div>
+            <div class='row'><div class='col-25'><label> MARKS OBTAINED - ${i} </label></div><div class='col-75'> <input type='text' id='${sid_sgpa}' > </div> </div>
+    <div class='row'><div class='col-25'><label> TOTAL MARKS - ${i} </label></div><div class='col-75'> <input type='text' id='${tid_sgpa}' value="100" readonly> </div> </div>
+    <div class='row'><div class='col-25'><label> CREDIT SCORE - ${i} </label></div><div class='col-75'> <input type='text' id='${cid_sgpa}' > </div> </div><hr/>`;
+            document.getElementById(divName_sgpa).appendChild(newdiv_sgpa);
+            //console.log(i);
+        }
+    }
+
+    function getValue_sgpa() {
+        var tempTotalsgpa = total_sgpa;
+        for (i = 1; i <= tempTotalsgpa; i++) {
+            var coursename_sgpa = document.getElementById(`course${i}`).value;
+            course_sgpa.push(coursename_sgpa);
+            var scoreid = document.getElementById(`sub${i}`).value;
+            Asco_sgpa.push(scoreid);
+            var totalid = document.getElementById(`tot${i}`).value;
+            Atot_sgpa.push(totalid);
+            var credtid = document.getElementById(`cre${i}`).value;
+            Acre_sgpa.push(credtid);
+
+
+            //console.log("Test");
+            //console.log(i);
+            //console.log("Score ID: " + scoreid);
+            //console.log("Total ID: " + totalid);
+            //console.log("Credit ID: " + credtid);
+
+            //console.log("Array");
+            //console.log(Asco);
+            //console.log(Atot);
+            //console.log(Acre);
+        }
+    }
+
+    function CalPer_sgpa() {
+        for (i = 0; i < total_sgpa; i++) {
+            var per_sgpa = (Asco_sgpa[i] / Atot_sgpa[i]) * 100
+                //console.log(per);
+                //Aper.push(per);
+            Aper_sgpa[i] = per_sgpa;
+        }
+    }
+
+    function CalGradCase_sgpa(val) {
+        //console.log("Val in CalGradeCase: " + val);
+        switch (true) {
+            case (val >= 90):
+                return 10;
+                break;
+            case (val < 90 && val >= 80):
+                return 9;
+                break;
+            case (val < 80 && val >= 70):
+                return 8;
+                break;
+            case (val < 70 && val >= 60):
+                return 7;
+                break;
+            case (val < 60 && val >= 50):
+                return 6;
+                break;
+            case (val < 50 && val >= 40):
+                return 5;
+                break;
+
+            case (val < 40):
+                return 0;
+                break;
+            default:
+                return 0;
+        }
+    }
+
+    function CalGrad_sgpa() {
+        //console.log("Total in CalGrad: " + total);
+        for (i = 0; i < total_sgpa; i++) {
+            var grade_sgpa = CalGradCase(Aper_sgpa[i]);
+            //console.log("Grade: " + grade);
+            Agrd_sgpa[i] = grade_sgpa;
+        }
+    }
+
+    function CalTotalCred_sgpa() {
+        var totalCred_sgpa = 0;
+        for (i = 0; i < total_sgpa; i++) {
+            totalCred_sgpa = totalCred_sgpa + parseInt(Acre_sgpa[i]);
+        }
+        //console.log("Total Cred: " + totalCred);
+        return totalCred;
+    }
+
+    function CalSubSol_sgpa() {
+        var SSTotal_sgpa = 0;
+        var temp_sgpa = 0;
+        for (i = 0; i < total_sgpa; i++) {
+            temp_sgpa = Agrd_sgpa[i] * Acre_sgpa[i];
+            SSTotal_sgpa = SSTotal_sgpa + temp_sgpa;
+            ASol_sgpa[i] = temp_sgpa;
+        }
+        return SSTotal_sgpa;
+    }
+
+    function DisSGPA_sgpa(i) {
+        var newdiv_sgpa = document.createElement('div');
+        newdiv_sgpa.innerHTML = `Your SGPA is <big>${i}</big> `;
+        document.getElementById("SGPAResult").appendChild(newdiv_sgpa);
+    }
+
+    function TotalScore_sgpa() {
+        var totalSco_sgpa = 0;
+        for (i = 0; i < total_sgpa; i++) {
+            totalSco_sgpa = parseInt(Asco_sgpa[i]) + totalSco_sgpa;
+        }
+        return totalSco_sgpa;
+    }
+
+    function GradeToLetter_sgpa(G) {
+        switch (G) {
+            case 10:
+                return 'S';
+                break;
+            case 9:
+                return 'A';
+                break;
+            case 8:
+                return 'B';
+                break;
+            case 7:
+                return 'C';
+                break;
+            case 6:
+                return 'D';
+                break;
+            case 5:
+                return 'E';
+                break;
+
+            case 0:
+                return 'F';
+                break;
+            default:
+                return 'Error';
+
+        }
+    }
+
+    function DisTable_sgpa(i) {
+        var temp_sgpa = i + 1;
+        var table_sgpa = document.getElementById("SGPATable");
+        var row_sgpa = table_sgpa.insertRow(temp_sgpa);
+        var cell1_sgpa = row_sgpa.insertCell(0);
+        var cell2_sgpa = row_sgpa.insertCell(1);
+        var cell3_sgpa = row_sgpa.insertCell(2);
+        var cell4_sgpa = row_sgpa.insertCell(3);
+        var cell5_sgpa = row_sgpa.insertCell(4);
+        var cell6_sgpa = row_sgpa.insertCell(5);
+        var cell7_sgpa = row_sgpa.insertCell(6);
+        cell1_sgpa.innerHTML = course_sgpa[i];
+        cell2_sgpa.innerHTML = Asco_sgpa[i];
+        cell3_sgpa.innerHTML = (Aper_sgpa[i]).toFixed(4) + " %";
+        cell4_sgpa.innerHTML = Acre_sgpa[i];
+        cell5_sgpa.innerHTML = Agrd_sgpa[i];
+        cell6_sgpa.innerHTML = GradeToLetter(Agrd_sgpa[i]);
+        cell7_sgpa.innerHTML = ASol_sgpa[i];
+    }
+
+    function TotalPer_sgpa() {
+        var Totper_sgpa = 0;
+        var Totper1_sgpa = 0;
+        var temp_sgpa = total_sgpa;
+        for (i = 0; i < temp_sgpa; i++) {
+            Totper_sgpa = Totper_sgpa + Aper_sgpa[i];
+        }
+        Totper1_sgpa = Totpe_sgpar / temp_sgpa;
+        return Totper1_sgpa;
+    }
+
+    function TotalGrad_sgpa() {
+        var TtlGrad_sgpa = 0;
+        for (i = 0; i < total_sgpa; i++) {
+            TtlGrad_sgpa = TtlGrad_sgpa + Agrd_sgpa[i];
+        }
+        return TtlGrad_sgpa;
+    }
+
+    function DisTabTotal_sgpa(i) {
+        temp_sgpa = parseInt(i);
+        var table_sgpa = document.getElementById("SGPATable");
+        var row = table_sgpa.insertRow(temp);
+        var cell1 = row_sgpa.insertCell(0);
+        var cell2 = row_sgpa.insertCell(1);
+        var cell3 = row_sgpa.insertCell(2);
+        var cell4 = row_sgpa.insertCell(3);
+        var cell5 = row_sgpa.insertCell(4);
+        var cell6 = row_sgpa.insertCell(5);
+        var cell7 = row_sgpa.insertCell(6);
+        cell1.innerHTML = "Total";
+        cell2.innerHTML = TotalScore_sgpa();
+        cell3.innerHTML = (TotalPer_sgpa()).toFixed(4) + " %";
+        cell4.innerHTML = CalTotalCred_sgpa();
+        cell5.innerHTML = TotalGrad_sgpa();
+        cell6.innerHTML = "-";
+        cell7.innerHTML = CalSubSol_sgpa();
+    }
+
+    function DisSGPATotal_sgpa() {
+        var newdiv_sgpa = document.createElement('div');
+        newdiv_sgpa.innerHTML = `Thus, SGPA = ${CalSubSol_sgpa()} / ${CalTotalCred_sgpa()} =  ${SGPA}`;
+        document.getElementById("FinalSGPA").appendChild(newdiv_sgpa);
+    }
+
+    function calculate_sgpa() {
+        getValue_sgpa();
+        CalPer_sgpa();
+        //console.log(Aper);
+        CalGrad_sgpa();
+        //console.log(Agrd);
+        var TCred_sgpa = CalTotalCred_sgpa();
+        //console.log("Total Cred in Calculate: " + TCred);
+        var TSS_sgpa = CalSubSol_sgpa();
+        //console.log("Array of Sub Sol: " + ASol);
+        //console.log("CalSubSol Return: " + TSS);
+        SGPA = (TSS_sgpa / TCred_sgpa).toFixed(4);
+        //console.log("SGPA: " + SGPA);
+        DisSGPA_sgpa(SGPA);
+        for (i = 0; i < total_sgpa; i++) {
+            DisTable_sgpa(i);
+        }
+        var final1 = parseInt(total) + 1;
+        //console.log("Total in Calculate: " + final1);
+        DisTabTotal_sgpa(final1);
+        DisSGPATotal_sgpa();
+        document.getElementById("Step2_sgpa").style.display = "none";
+        document.getElementById("Step3_sgpa").style.display = "block";
+        var elmnt_sgpa = document.getElementById("Step3_sgpa");
+        elmnt_sgpa.scrollIntoView();
+    }
+
+
+    function ClearData_sgpa() {
+        var okToRefresh = confirm("Do you really want to Clear the data?");
+        if (okToRefresh) {
+            setTimeout("location.reload(true);", 150);
+            var elmnt = document.getElementById("Step1");
+            elmnt.scrollIntoView();
+        }
+    }
+</script>
+<style>
+    /* Style inputs, select elements and textareas */
+    
+    input[type=text],
+    select,
+    textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        resize: vertical;
+    }
+    /* Style the label to display next to the inputs */
+    
+    label {
+        padding: 12px 12px 12px 0;
+        display: inline-block;
+    }
+    /* Style the submit button */
+    
+    input[type=submit] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        float: right;
+    }
+    /* Style the submit button */
+    
+    input[type=button] {
+        background-color: #ff0000;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        float: left;
+    }
+    /* Style the container */
+    
+    .container {
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+    }
+    /* Floating column for labels: 25% width */
+    
+    .col-25 {
+        float: left;
+        width: 25%;
+        margin-top: 6px;
+    }
+    /* Floating column for inputs: 75% width */
+    
+    .col-75 {
+        float: left;
+        width: 75%;
+        margin-top: 6px;
+    }
+    /* Clear floats after the columns */
+    
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+    /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+    
+    @media screen and (max-width: 600px) {
+        .col-25,
+        .col-75,
+        input[type=submit] {
+            width: 100%;
+            margin-top: 0;
+        }
+    }
+    
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+        width: 100%;
+        border: 5px solid #33cc00;
+    }
+    
+    th,
+    td {
+        text-align: left;
+        padding: 8px;
+        border: 5px solid #33cc00;
+    }
+    
+    tr:nth-child(even) {
+        background-color: #b3ffb3;
+    }
+    
+    .center {
+        text-align: center;
+    }
+    
+    input {
+        text-transform: uppercase;
+    }
+</style>
+
+<body>
+    <div id="main">
+        <!-- HEADER NAME WITH LOGO  -->
+        <center><button type="button" class="btn btn-primary" onclick="location.href='index.html'" style="margin: 2rem;">HOME </button></center>
+        <div class="container" id="Step1">
+            <h1 class="center">STEP 1</h1>
+            <div class="row">
+                <div class="col-25">
+                    <label for="total">SELECT THE NUMBER OF SEMESTERS : </label>
+                </div>
+                <div class="col-75">
+                    <select id="total" name="total1">
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+						</select>
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <input type="submit" value="Submit" onclick="showMarks()">
+            </div>
+
+            <br />
+            <div class="row_sgpa">
+                <input type="button" value="Clear" onclick="ClearData()">
+            </div>
+            <br/>
+            <!-- <div class="row">
+                <input type="submit" onclick="WhatsappShare()" style="float:center;" value="Whatsapp Share">
+                </input>
+            </div><br/>
+            <div class="row">
+                <input type="submit" value="SGPA Calculator" onclick="window.location.href='https://hemanthrajhemu.github.io/SGPA-Calculator.html'">
+            </div> -->
+        </div>
+        <br />
+
+        <div class="container" id="Step2" style="display: none;">
+            <h1 class="center">STEP 2</h1>
+            <div class="row">
+                <input type="submit" value="SGPA Calculator" onclick="window.location.href='#'">
+            </div>
+            <div class="row" id="dynamicInput">
+            </div><br/>
+            <div class="row">
+                <input type="submit" value="Calculate" onclick="calculate()">
+            </div>
+
+            <br />
+            <div class="row_sgpa">
+                <input type="button" value="Clear" onclick="ClearData()">
+            </div><br/>
+            <!-- <div class="row">
+                <input type="submit" onclick="WhatsappShare()" style="float:center;" value="Whatsapp Share">
+                </input>
+            </div> -->
+
+        </div>
+        <br />
+
+        <div class="container" id="Step3" style="display: none;">
+            <h1 class="center">STEP 3 </h1>
+            <div class="desp" id="CGPAResult"></div>
+            <br /><br /><br />
+            <div>
+                <div class="center" style="overflow-x:auto;">
+                    <table id="CGPATable" class="center">
+                        <tr>
+                            <th>SEMESTER</th>
+                            <th>SGPA</th>
+                            <th>CREDIT</th>
+                            <th>CREDIT POINTS (SGPA * CREDIT)</th>
+                        </tr>
+
+                    </table>
+                </div>
+            </div>
+            <div class="desp" id="FinalCGPA"></div>
+
+            <br />
+            <div class="row">
+                <input type="button" value="Clear" onclick="ClearData()">
+            </div><br/>
+            <!-- <div class="row">
+                <input type="submit" onclick="WhatsappShare()" style="float:center;" value="Whatsapp Share">
+                </input>
+            </div><br/>
+            <div class="row">
+                <input type="submit" value="SGPA Calculator" onclick="window.location.href='https://hemanthrajhemu.github.io/SGPA-Calculator.html'">
+            </div> -->
+
+
+        </div>
+
+
+    </div>
+    <div class="container" id="Step1_sgpa">
+        <h1 class="center">STEP 1</h1>
+        <div class="row_sgpa">
+            <div class="col-25">
+                <label for="total_sgpa">ENTER THE TOTAL NUMBER OF SUBJECTS : </label>
+            </div>
+            <div class="col-75">
+                <select id="total_sgpa" name="total1">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                    </select>
+            </div>
+        </div>
+        <br />
+        <div class="row_sgpa">
+            <input type="submit" value="Submit" onclick="showMarks_sgpa()">
+        </div>
+
+        <br />
+        <div class="row_sgpa">
+            <input type="button" value="Clear" onclick="ClearData_sgpa()">
+        </div><br />
+        <!-- <div class="row">
+            <input type="submit" onclick="WhatsappShare()" style="float:center;" value="Whatsapp Share">
+            </input>
+        </div>
+        <br />
+        <div class="row">
+            <input type="submit" value="CGPA Calculator" onclick="window.location.href='https://hemanthrajhemu.github.io/CGPA-Calculator.html'">
+        </div> -->
+    </div>
+    <br />
+
+    <div class="container" id="Step2_sgpa" style="display: none;">
+        <h1 class="center">STEP 2</h1>
+        <div class="row" id="dynamicInput_sgpa">
+        </div>
+        <br />
+        <div class="row_sgpa">
+            <input type="submit" value="Calculate" onclick="calculate_sgpa()">
+        </div>
+
+        <br />
+        <div class="row_sgpa">
+            <input type="button" value="Clear" onclick="ClearData_sgpa()">
+        </div><br />
+
+    </div>
+    <br />
+
+    <div class="container" id="Step3_sgpa" style="display: none;">
+        <h1 class="center">STEP 3</h1>
+        <div class="desp" id="SGPAResult"></div>
+        <br /><br /><br />
+        <div>
+            <div class="center" style="overflow-x:auto;">
+                <table id="SGPATable" class="center">
+                    <tr>
+                        <th>COURSE NAME</th>
+                        <th>OBTAINED MARKS</th>
+                        <th>PERCENTAGE</th>
+                        <th>CREDIT</th>
+                        <th>GRADE POINT</th>
+                        <th>GRADE LETTER</th>
+                        <th>CREDIT POINTS (CREDIT * GRADE)</th>
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+        <div class="desp" id="FinalSGPA"></div>
+
+        <br />
+        <div class="row_sgpa">
+            <input type="button" value="Clear" onclick="ClearData_sgpa()">
+        </div><br />
+        <!-- <div class="row">
+            <input type="submit" onclick="WhatsappShare()" style="float:center;" value="Whatsapp Share">
+            </input>
+        </div>
+        <br />
+        <div class="row">
+            <input type="submit" value="CGPA Calculator" onclick="window.location.href='https://hemanthrajhemu.github.io/CGPA-Calculator.html'">
+        </div> -->
+
+    </div>
+</body>
+
+</html>
