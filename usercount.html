@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USER COUNT</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-database.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1 id="view_count_header">VIEW COUNTS</h1>
+        <div id="view_count_container">
+            <p id="view_count_text" style="font-size: 100px;"></p>
+        </div>
+    </div>
+</body>
+<script>
+    function incr(val, id) {
+        let data = document.getElementById("view_count_text");
+        if (!data.innerHTML.length) data.innerHTML = "0";
+        if (parseInt(data.innerHTML) >= val) return;
+        data.innerHTML = `${parseInt(data.innerHTML)+1}`;
+    }
+    setTimeout(incr(0, view_count_text), 50);
+</script>
+<script type="application/javascript">
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+        apiKey: "AIzaSyDyTsVWuelcTDvftoolAXUy9ibmUaOxcSo",
+        authDomain: "user-count-25843.firebaseapp.com",
+        projectId: "user-count-25843",
+        storageBucket: "user-count-25843.appspot.com",
+        messagingSenderId: "946986897962",
+        appId: "1:946986897962:web:1cc21766e9fef1f1e86953"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    function get_viewers_ip(json) {
+        viewers_ip = json.ip;
+        count_view(viewers_ip);
+    }
+
+    function count_view(viewers_ip) {
+        var views;
+        var ip_to_string = viewers_ip.toString();
+
+        for (var i = 0; i < ip_to_string.length; i++) {
+            ip_to_string = ip_to_string.replace(".", "-");
+        }
+        firebase.database().ref().child("page_views/" + ip_to_string).set({
+            viewers_ip: viewers_ip
+        });
+        firebase.database().ref().child("page_views").on("value", function(snapshot) {
+            views = snapshot.numChildren();
+            document.getElementById("view_count_text").innerHTML = " " + (views + 6);
+        });
+    }
+</script>
+<script type="application/javascript" src="https://api.ipify.org?format=jsonp&callback=get_viewers_ip">
+</script>
+
+</html>

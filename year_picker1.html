@@ -1,0 +1,130 @@
+<!--This yearpicker development from Zlatko Borojevic
+	html elemnts can generate with java function
+    and then declare as custom type for easy use in all html documents 
+	For this version for implementacion in your document can use:
+	1. Save this code for example: "yearonly.html"
+	2. creaate one div with id="yearonly"
+	3. Include year picker with function: $("#yearonly").load("yearonly.html"); 
+	
+	<div id="yearonly"></div>
+	<script>
+	$("#yearonly").load("yearonly.html"); 
+	</script>
+	-->
+
+
+
+<!DOCTYPE html>
+<meta name="viewport" content="text-align:center; width=device-width, initial-scale=1.0">
+<html>
+
+<body>
+    <style>
+        .ydiv {
+            border: solid 1px;
+            width: 200px;
+            height: 150px;
+            background-color: #D8D8D8;
+            display: none;
+            position: absolute;
+            top: 40px;
+        }
+        
+        .ybutton {
+            border: none;
+            width: 35px;
+            height: 35px;
+            background-color: #D8D8D8;
+            font-size: 100%;
+        }
+        
+        .yhr {
+            background-color: black;
+            color: black;
+            height: 1px">
+
+        }
+        
+        .ytext {
+            border: none;
+            text-align: center;
+            width: 118px;
+            font-size: 100%;
+            background-color: #D8D8D8;
+            font-weight: bold;
+        }
+    </style>
+    <p>
+        <!-- input text for display result of yearpicker -->
+        <input type="text" id="yeardate"><button style="width:21px;height:21px" onclick="enabledisable()">V</button></p>
+
+    <!-- yearpicker panel for change only year-->
+    <div class="ydiv" id="yearpicker">
+        <button class="ybutton" style="font-weight:bold;" onclick="changedecade('back')"><</button>
+
+        <input class="ytext" id="dec" type="text" value="2018">
+
+        <button class="ybutton" style="font-weight:bold;" onclick="changedecade('next')">></button>
+        <hr></hr>
+
+
+
+        <!-- subpanel with one year 0-9 -->
+        <button class="ybutton" onclick="yearone = 0;setyear()">0</button>
+        <button class="ybutton" onclick="yearone = 1;setyear()">1</button>
+        <button class="ybutton" onclick="yearone = 2;setyear()">2</button>
+        <button class="ybutton" onclick="yearone = 3;setyear()">3</button>
+        <button class="ybutton" onclick="yearone = 4;setyear()">4</button><br>
+        <button class="ybutton" onclick="yearone = 5;setyear()">5</button>
+        <button class="ybutton" onclick="yearone = 6;setyear()">6</button>
+        <button class="ybutton" onclick="yearone = 7;setyear()">7</button>
+        <button class="ybutton" onclick="yearone = 8;setyear()">8</button>
+        <button class="ybutton" onclick="yearone = 9;setyear()">9</button>
+    </div>
+    <!-- end year panel	-->
+
+
+
+    <script>
+        var date = new Date();
+        var year = date.getFullYear(); //get current year
+        //document.getElementById("yeardate").value = year;// can rem if filing text from database
+
+        var yearone = 0;
+
+        function changedecade(val1) { //change decade for year
+
+            var x = parseInt(document.getElementById("dec").value.substring(0, 3) + "0");
+            if (val1 == "next") {
+                document.getElementById('dec').value = x + 10;
+            } else {
+                document.getElementById('dec').value = x - 10;
+            }
+        }
+
+        function setyear() { //set full year as sum decade and one year in decade
+            var x = parseInt(document.getElementById("dec").value.substring(0, 3) + "0");
+            var y = parseFloat(yearone);
+
+            var suma = x + y;
+            var d = new Date();
+            d.setFullYear(suma);
+            var year = d.getFullYear();
+            document.getElementById("dec").value = year;
+            document.getElementById("yeardate").value = year;
+            document.getElementById("yearpicker").style.display = "none";
+            yearone = 0;
+        }
+
+        function enabledisable() { //enable/disable year panel
+            if (document.getElementById("yearpicker").style.display == "block") {
+                document.getElementById("yearpicker").style.display = "none";
+            } else {
+                document.getElementById("yearpicker").style.display = "block";
+            }
+
+        }
+    </script>
+</body>
+
+</html>
