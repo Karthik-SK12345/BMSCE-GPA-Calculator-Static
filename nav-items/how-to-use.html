@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <meta name="description" content="CALCULATE SGPA AND CGPA OF BMSCE RESULTS QUICKLY HERE!">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/css/homepage.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>BMSCE SGPA CALCULATOR</title>
+    <link rel="icon" href="/assets/images/title-image.png" type="image/icon type">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@1,600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <style>
+        /* Font */
+        
+        @import url('https://fonts.googleapis.com/css?family=Quicksand:400,700');
+        /* Design */
+        
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+        
+        html {
+            background-color: #161b22;
+        }
+        
+        body {
+            background-color: #161b22;
+            color: white;
+            font-family: 'Quicksand', serif;
+            font-style: normal;
+            font-weight: 400;
+            letter-spacing: 0;
+        }
+        
+        .main {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        h1 {
+            font-size: 24px;
+            font-weight: 400;
+            text-align: center;
+        }
+        
+        img {
+            height: auto;
+            max-width: 100%;
+            vertical-align: middle;
+        }
+        
+        #btn1 {
+            color: #ffffff;
+            padding: 0.8rem;
+            font-size: 14px;
+            text-transform: uppercase;
+            border-radius: 4px;
+            font-weight: 400;
+            display: block;
+            width: 100%;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: transparent;
+        }
+        
+        #btn1:hover {
+            background-color: rgba(255, 255, 255, 0.12);
+        }
+        
+        .cards {
+            display: block;
+            flex-wrap: wrap;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+        
+        .cards_item {
+            display: flex;
+            padding: 1rem;
+        }
+        
+        @media (min-width: 40rem) {
+            .cards_item {
+                width: 100%;
+            }
+        }
+        
+        @media (min-width: 56rem) {
+            .cards_item {
+                width: 100%;
+            }
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 0.25rem;
+            box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+            display: block;
+            width: 100%;
+        }
+        
+        .card_content {
+            padding: 1rem;
+            width: 100%;
+            background: linear-gradient(to bottom left, #EF8D9C 40%, #FFC39E 100%);
+            background-color: #7f5a83;
+            background-image: linear-gradient(315deg, #7f5a83 0%, #0d324d 74%);
+            background-color: #0cbaba;
+            background-image: linear-gradient(315deg, #038d8d 0%, #380036 74%);
+        }
+        
+        .card_title {
+            color: #ffffff;
+            font-size: 20px;
+            width: 100%;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin: 0px;
+        }
+        
+        .card_text {
+            color: #ffffff;
+            font-size: 18px;
+            width: 100%;
+            margin-bottom: 1.25rem;
+            font-family: 'Quicksand', serif;
+            font-weight: 800;
+        }
+        
+        .made_by {
+            font-weight: 400;
+            width: 100%;
+            font-size: 13px;
+            margin-top: 35px;
+            text-align: center;
+        }
+    </style>
+    <script>
+        $(function() {
+            var popup = $('#mainpopup');
+            var time = $(".will-close strong");
+            var closeSeconds = $("#mainpopup").attr("data-close");
+            var openSeconds = $("#mainpopup").attr("data-open");
+            var dataSrc = $("#mainpopup").attr("data-href");
+
+
+            setTimeout(function(e) {
+
+                popup.modal('show');
+                time.html(closeSeconds);
+
+                setInterval(function() {
+                    time.html(closeSeconds);
+                    closeSeconds--;
+
+                    if (closeSeconds < 0) {
+                        popup.modal('hide');
+                    }
+
+                }, 1000)
+
+            }, openSeconds * 1000);
+
+            $.ajax({
+                url: dataSrc,
+                dataType: "html",
+                success: function(data) {
+                    $(".modal-body").html(data);
+                }
+            });
+
+
+        });
+    </script>
+    <script>
+        function bootnavbar(el = 'main_navbar', options) {
+            let defaultOption = {
+
+            }
+
+            options = {...defaultOption,
+                ...options
+            }
+
+
+            var isMobile = {
+                Android: function() {
+                    return navigator.userAgent.match(/Android/i);
+                },
+                BlackBerry: function() {
+                    return navigator.userAgent.match(/BlackBerry/i);
+                },
+                iOS: function() {
+                    return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+                },
+                Opera: function() {
+                    return navigator.userAgent.match(/Opera Mini/i);
+                },
+                Windows: function() {
+                    return navigator.userAgent.match(/IEMobile/i) || navigator.userAgent.match(/WPDesktop/i);
+                },
+                any: function() {
+                    return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+                }
+            };
+
+            this.init = function() {
+                var dropdowns = document.getElementById(el).getElementsByClassName("dropdown");
+                console.log(dropdowns);
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var dropdown = dropdowns.item(i);
+                    dropdown.addEventListener("mouseover", function() {
+                        this.classList.add('show');
+                        this.getElementsByClassName("dropdown-menu")[0].classList.add('show');
+                    });
+                    dropdown.addEventListener("mouseout", function() {
+                        this.classList.remove('show');
+                        this.getElementsByClassName("dropdown-menu")[0].classList.remove('show');
+                    });
+                }
+                // document.getElementById(el).getElementsByClassName("dropdown").forEach(dropdown => {
+                //     dropdown.addEventListener("mouseover", function(){
+                //         dropdown.classList.add('show');
+                //         dropdown.getElementsByClassName("dropdown-menu")[0].classList.add('show');
+                //     });
+                //     dropdown.addEventListener("mouseout", function(){
+                //         dropdown.classList.remove('show');
+                //         dropdown.getElementsByClassName("dropdown-menu")[0].classList.remove('show');
+                //     });
+                // });
+            }
+
+            this.init();
+        }
+    </script>
+</head>
+
+
+
+
+<body>
+
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top sticky-onscroll py-0 " id="main_navbar" style="font-size: 16px;padding-top: 1rem;">
+        <div class="container-fluid ">
+            <a class="navbar-brand py-0" href="/nav-items/homepage.html" style="margin-top: 10px;margin-bottom: 0.5rem;">
+                <img id="navlogo" src="/assets/images/logo.jpg" width="25" height="25" class="d-inline-block align-top" alt="" loading="lazy">
+                <b style="color: white;" id="mybmsce"><b style="margin-top: 5px;"></b> SGPA CALCULATOR</b>
+            </a>
+            <button class="navbar-toggler py-0 btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon py-0"></span>
+            </button>
+            <div class="collapse navbar-collapse py-0" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item  active">
+                        <a class="nav-link disabled" href="/nav-items/homepage.html" id="nav_items" style="color: #84abff;"><b>HOME</b>
+                        </a>
+                    </li>
+
+                    <li class="nav-item  dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" style="color: white;">
+                            <b>SGPA CALCULATOR</b>
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" style="font-weight: bold;" href="/sgpa/semesters/1st year/sgpa-phy.html">PHYSICS CYCLE</a></li>
+                            <li><a class="dropdown-item" style="font-weight: bold;" href="/sgpa/semesters/1st year/sgpa-chem.html">CHEMISTRY CYCLE</a></li>
+                            <li><a class="dropdown-item" style="font-weight: bold;" href="/sgpa/semesters/3rd-sem.html">III SEMESTER</a></li>
+                            <li><a class="dropdown-item" style="font-weight: bold;" href="/sgpa/semesters/4th-sem.html">IV SEMESTER</a></li>
+                            <li><a class="dropdown-item" style="font-weight: bold;" href="/sgpa/semesters/5th-sem.html">V SEMESTER</a></li>
+                            <li><a class="dropdown-item" style="font-weight: bold;" href="/sgpa/semesters/6th-sem.html">VI SEMESTER</a></li>
+                            <li><a class="dropdown-item" style="font-weight: bold;" href="/sgpa/semesters/7th-sem.html">VII SEMESTER</a></li>
+                            <li><a class="dropdown-item" style="font-weight: bold;" href="/sgpa/semesters/8th-sem.html">VIII SEMESTER</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="nav-item  dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" style="color: white;">
+                            <b> CGPA CALCULATOR</b>
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/cgpa/cgpa-cse.html">CSE BRANCH</a></li>
+                            <li><a class="dropdown-item" href="/cgpa/cgpa-ise.html">ISE BRANCH</a></li>
+                            <li><a class="dropdown-item" href="/cgpa/cgpa-etc.html">ETC BRANCH</a></li>
+                            <li><a class="dropdown-item" href="/cgpa/cgpa-ece.html">ECE BRANCH</a></li>
+                            <li><a class="dropdown-item" href="/cgpa/cgpa-eee.html">EEE BRANCH</a></li>
+                            <li><a class="dropdown-item" href="/cgpa/cgpa-eie.html">EIE BRANCH</a></li>
+                            <li><a class="dropdown-item" href="/cgpa/cgpa-mech.html">MECHANICAL BRANCH</a></li>
+                            <li><a class="dropdown-item" href="/cgpa/cgpa-me.html">MEDICAL ELECTRONICS BRANCH</a></li>
+                            <li><a class="dropdown-item" href="/cgpa/cgpa-iem.html">IEM BRANCH</a></li>
+                            <li><a class="dropdown-item" href="/cgpa/cgpa-chem.html">CHEMICAL BRANCH</a></li>
+                            <li><a class="dropdown-item" href="/cgpa/cgpa-civil.html">CIVIL BRANCH</a></li>
+                            <li><a class="dropdown-item" href="/cgpa/cgpa-bio.html">BIOTECH BRANCH</a></li>
+                            <li><a class="dropdown-item" href="/cgpa/cgpa-aiml.html">AI AND ML BRANCH</a></li>
+                            <li><a class="dropdown-item" href="/cgpa/cgpa-ae.html">AEROSPACE BRANCH</a></li>
+
+
+
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" style="color: white;">
+                            <b>% CALCULATOR</b>
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/nav-items/cgpatoper.html">CHECK % </a></li>
+
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" style="color: white;">
+                            <b>MY PROFILE</b>
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/nav-items/User-Profile-Cgpa.html">CGPA DATA</a></li>
+                            <li><a class="dropdown-item" href="/nav-items/User-Profile-Sgpa.html">SGPA DATA</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" style="color: white;">
+                            <b>HOW TO USE</b>
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/nav-items/how-to-use.html">OPEN </a></li>
+
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" style="color: white;">
+                            <b>1ST YEARS</b>
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/1st-year/homepage1styear.html">OPEN RESOURCES </a></li>
+
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" style="color: white;">
+                            <b>RESULTS</b>
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="https://results.bmsce.in/">OPEN LINK </a></li>
+
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link " href="/nav-items/contactme.html" id="nav_items" style="color: white;"><b>CONTACT</b>
+                        </a>
+                    </li>
+                    <li> <button class="btn btn-danger btn-sm" onclick="mainApp.logout();" style="margin-left: 0rem;font-weight: bolder;border: 1px solid white;margin-top: 5px;margin-bottom: 3px;" onclick="location.href='index.html'"><img src="/images/logout.jpg" style="height: 8px; height: 12px;border-radius: 10rem;border: 1px solid white;margin-bottom: 0.2rem;"> <span>LOG OUT</span>
+                        <div id="main_container" style="display:none;">
+                          
+            </div>
+            </button>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
+
+</body>
+
+</html>
+
+
+
+<!-- Modal -->
+
+<!-- <div id="preloader">
+    <div id="loader-img">
+        <div id="loader" style="border-radius: 10rem;"></div>
+    </div>
+</div> -->
+<div class="main justify-content-center align-items-center" style="margin-top: 3rem;width: 100%;">
+    <h1 style="font-weight: bolder;margin-top: 1rem;">HOW TO MAKE THE MOST OF THIS SITE? </h1>
+    <ul class="cards">
+        <li class="cards_item">
+            <div class="card">
+                <div class="card_image" style="background-color: #af8c9d;
+                background-image: linear-gradient(315deg, #af8c9d 0%, #8cacac 74%);
+                ">
+                    <center><img src="/assets/images/preloader.jpg" style="height: 150px;margin: 1rem;"></center>
+                </div>
+                <div class="card_content">
+                    <h2 class="card_title">BMSCE SGPA / CGPA / PERCENTAGE CALCULATOR</h2><br>
+                    <p class="card_text">Hey guys , Here i will be giving a quick overview of the website talking about the features and how to use it the right way.This is a SGPA , CGPA and Percentage calculator. Here the students of all branches of BMSCE can calculate SGPA
+                        and CGPA simutaneusly and save, update and delete the data. He can login to view his stored data anytime.</p>
+
+                </div>
+            </div>
+        </li>
+        <li class="cards_item">
+            <div class="card">
+                <div class="card_image"><img src="/assets/images/how-to-use/1-index-pg.png"></div>
+                <div class="card_content">
+                    <h2 class="card_title">INDEX PAGE (SIGN UP / LOGIN)</h2><br>
+                    <p class="card_text">This is the Page where a user will land when he opens the site and he /she needs to enter proper NAME nad USN and enter his chosen email and Password to sign up.</p>
+
+                </div>
+            </div>
+        </li>
+        <li class="cards_item">
+            <div class="card">
+                <div class="card_image"><img src="/assets/images/how-to-use/2-index-pg-details.png"></div>
+                <div class="card_content">
+                    <h2 class="card_title">INDEX PAGE (SIGN UP / LOGIN) - CREDENTIALS</h2><br>
+                    <p class="card_text">As shown above user needs to enter his credentials and sign up. Next time while login he needs to remember his Password. You can also retrieve your account anytime if you forgot your password.</p>
+
+                </div>
+            </div>
+        </li>
+        <li class="cards_item">
+            <div class="card">
+                <div class="card_image"><img src="/assets/images/how-to-use/3-homepage.png"></div>
+                <div class="card_content">
+                    <h2 class="card_title">HOMEPAGE LAYOUT</h2><br>
+                    <p class="card_text">After login / signup every user will be on this homepage shown above from where they can navigate to their respective menu to perform their Calculations.</p>
+
+                </div>
+            </div>
+        </li>
+        <li class="cards_item">
+            <div class="card">
+                <div class="card_image"><img src="/assets/images/how-to-use/4-sgpa-nav.png"></div>
+                <div class="card_content">
+                    <h2 class="card_title">SGPA CALCULATOR DROPDOWN</h2><br>
+                    <p class="card_text">In case the user wishes to calculate his SGPA of a particular semester they can select it from the navbar dropdown or from the homepage cards.</p>
+
+                </div>
+            </div>
+        </li>
+        <li class="cards_item">
+            <div class="card">
+                <div class="card_image"><img src="/assets/images/how-to-use/5-sgpa-details(1).png"></div>
+                <div class="card_content">
+                    <h2 class="card_title">SGPA CALCULATOR LAYOUT</h2><br>
+                    <p class="card_text">This is how any SGPA calculator layout looks after you select the respective semester you can choose from the branches given.</p>
+
+                </div>
+            </div>
+        </li>
+        <li class="cards_item">
+            <div class="card">
+                <div class="card_image"><img src="/assets/images/how-to-use/7-sgpa-details(3).png"></div>
+                <div class="card_content">
+                    <h2 class="card_title">SGPA CALCULATOR RESULTS</h2><br>
+                    <p class="card_text">Here the user is asked to enter his Grade secured from dropdown given below each subject and also the year of passing and then hit calculate to get your sgpa and then user also has an option to save the data below and download.<br><br><u>NOTE</u>                        : Here suppose any student has secured "F" Grade he can select "F" Grade from select option and save data for now. Later if the student clears those Subjects through either Fast-Track or Make-up he can just update his grade and
+                        year of passing and along with sgpa.</p>
+
+                </div>
+            </div>
+        </li>
+        <li class="cards_item">
+            <div class="card">
+                <div class="card_image"><img src="/assets/images/how-to-use/8-sgpa-data.png"></div>
+                <div class="card_content">
+                    <h2 class="card_title">SGPA CALCULATOR STORED DATA</h2><br>
+                    <p class="card_text">If the user has saved / updated his data it shows up right below his name so its easily available for him to update later.</p>
+
+                </div>
+            </div>
+        </li>
+        <li class="cards_item">
+            <div class="card">
+                <div class="card_image"><img src="/assets/images/how-to-use/9-cgpa-nav.png"></div>
+                <div class="card_content">
+                    <h2 class="card_title">CGPA CALCULATOR DROPDOWN</h2><br>
+                    <p class="card_text">If the user wishes to calculate his CGPA he can select it from the navbar and navigate to his respective branch / department.</p>
+
+                </div>
+            </div>
+        </li>
+        <li class="cards_item">
+            <div class="card">
+                <div class="card_image"><img src="/assets/images/how-to-use/11-cgpa-details(2).png"></div>
+                <div class="card_content">
+                    <h2 class="card_title">CGPA CALCULATOR LAYOUT</h2><br>
+                    <p class="card_text">This is how any CGPA calculator layout looks after you select the respective department. Here the user is asked to enter his respective semester sgpa. And calculate so here the user can update his data as when the semester results
+                        are released and download the same as well.</p>
+
+                </div>
+            </div>
+        </li>
+        <li class="cards_item">
+            <div class="card">
+                <div class="card_image"><img src="/assets/images/how-to-use/12-cgpa-details(3).png"></div>
+                <div class="card_content">
+                    <h2 class="card_title">CGPA CALCULATOR RESULTS</h2><br>
+                    <p class="card_text">So once the SGPA is entered they can see the Updated CGPA and also corresponding Percentage.</p>
+
+                </div>
+            </div>
+        </li>
+        <li class="cards_item">
+            <div class="card">
+                <div class="card_image"><img src="/assets/images/how-to-use/13-cgpa-data.png"></div>
+                <div class="card_content">
+                    <h2 class="card_title">CGPA CALCULATOR SAVED DATA</h2><br>
+                    <p class="card_text">If the user has saved / updated his data it shows up right below his name so its easily available for him to update later.</p>
+
+                </div>
+            </div>
+        </li>
+        <li class="cards_item">
+            <div class="card">
+                <div class="card_image"><img src="/assets/images/how-to-use/14-percentage.png"></div>
+                <div class="card_content">
+                    <h2 class="card_title">PERCENTAGE CALCULATOR</h2><br>
+                    <p class="card_text">There is also a separate option for Percentage Calculation where user can simply enter his cgpa and convert to check their Percentage.</p>
+
+                </div>
+            </div>
+        </li>
+        <li class="cards_item">
+            <div class="card">
+                <div class="card_image"><img src="/assets/images/how-to-use/15-data-nav.png"></div>
+                <div class="card_content">
+                    <h2 class="card_title">MY PROFILE DROPDOWN</h2><br>
+                    <p class="card_text">This is the user profile dropdown. Here the user can check for all his saved and updated data of all semesters of both SGPA and CGPA.</p>
+
+                </div>
+            </div>
+        </li>
+        <li class="cards_item">
+            <div class="card">
+                <div class="card_image"><img src="/assets/images/how-to-use/16-cgpa-data-up.png"></div>
+                <div class="card_content">
+                    <h2 class="card_title">CGPA DATA</h2><br>
+                    <p class="card_text">The stored CGPA appears where the user can either delete it or download the same.</p>
+
+                </div>
+            </div>
+        </li>
+        <li class="cards_item">
+            <div class="card">
+                <div class="card_image"><img src="/assets/images/how-to-use/17-sgpa-data-up.png"></div>
+                <div class="card_content">
+                    <h2 class="card_title">SGPA DATA</h2><br>
+                    <p class="card_text">The stored SGPA appears where the user can either delete it or download the same.</p>
+                </div>
+            </div>
+        </li>
+        <li class="cards_item">
+            <div class="card">
+                <div class="card_image"><img src="/assets/images/how-to-use/18-1styr-hm.png"></div>
+                <div class="card_content">
+                    <h2 class="card_title">1ST YEAR RESOURCES HOME PAGE</h2><br>
+                    <p class="card_text">Here the first year students get to access all the required study materials in one place such as Notes, Question Papers , TextBooks, Contribute Section, syllabus copy. <br> <br> <u>NOTE</u> : This section was created since classes
+                        are being held online and since First years may be little naive regarding the resources to refer.</p>
+                </div>
+            </div>
+        </li>
+        <li class="cards_item">
+            <div class="card">
+                <div class="card_image"><img src="/assets/images/how-to-use/19-notes-nav.png"></div>
+                <div class="card_content">
+                    <h2 class="card_title">NOTES SECTION DROPDOWN</h2><br>
+                    <p class="card_text">If the user wishes to access notes he can navigate to the navbar / card from the homepage and choose from the options given.</p>
+                </div>
+            </div>
+        </li>
+        <li class="cards_item">
+            <div class="card">
+                <div class="card_image"><img src="/assets/images/how-to-use/20-notes-data.png"></div>
+                <div class="card_content">
+                    <h2 class="card_title">NOTES SECTION LAYOUT</h2><br>
+                    <p class="card_text">This is how the frontend of Notes section looks like where each subject is connected to google drive where the user can unit wise notes to refer from.</p>
+                </div>
+            </div>
+        </li>
+        <li class="cards_item">
+            <div class="card">
+                <div class="card_image"><img src="/assets/images/how-to-use/21-notes-data-gd.png"></div>
+                <div class="card_content">
+                    <h2 class="card_title">NOTES SECTION DATA</h2><br>
+                    <p class="card_text">As we can can see this is how it looks from The Google drive link provided.</p>
+                </div>
+            </div>
+        </li>
+        <li class="cards_item">
+            <div class="card">
+                <div class="card_image"><img src="/assets/images/how-to-use/22-qns-nav.png"></div>
+                <div class="card_content">
+                    <h2 class="card_title">QUESTION PAPERS SECTION DROPDOWN</h2><br>
+                    <p class="card_text">If the user wishes to access Question Papers he can navigate to the side-nav/ main-navbar / card from the homepage and choose from the options given.</p>
+                </div>
+            </div>
+        </li>
+        <li class="cards_item">
+            <div class="card">
+                <div class="card_image"><img src="/assets/images/how-to-use/23-qns-data.png"></div>
+                <div class="card_content">
+                    <h2 class="card_title">QUESTION PAPERS FRONTEND</h2><br>
+                    <p class="card_text">Here its an easy access for the students where can he choose from the specific year papers and download.</p>
+                </div>
+            </div>
+        </li>
+        <li class="cards_item">
+            <div class="card">
+                <div class="card_image"><img src="/assets/images/how-to-use/24-qns-data-gd.png"></div>
+                <div class="card_content">
+                    <h2 class="card_title">QUESTION PAPERS DATA</h2><br>
+                    <p class="card_text">As we can can see this is how it looks from The Google drive link provided.</p>
+                </div>
+            </div>
+        </li>
+        <li class="cards_item">
+            <div class="card">
+                <div class="card_image"><img src="/assets/images/how-to-use/25-tb-nav.png"></div>
+                <div class="card_content">
+                    <h2 class="card_title">TEXTBOOKS SECTION DROPDOWN</h2><br>
+                    <p class="card_text">If the user wishes to access TextBooks he can do this way. Here i have attached almost all prescribed textbooks from this Section</p>
+                </div>
+            </div>
+        </li>
+        <li class="cards_item">
+            <div class="card">
+                <div class="card_image"><img src="/assets/images/how-to-use/26-tb-data-gd.png"></div>
+                <div class="card_content">
+                    <h2 class="card_title"> TEXTBOOKS FRONTEND</h2><br>
+                    <p class="card_text">Here its an easy access for the students where can he choose from the specific Subjects and download.</p>
+                </div>
+            </div>
+        </li>
+        <li class="cards_item">
+            <div class="card">
+                <div class="card_image"><img src="/assets/images/how-to-use/24-qns-data-gd.png"></div>
+                <div class="card_content">
+                    <h2 class="card_title">TEXTBOOKS DATA</h2><br>
+                    <p class="card_text">As we can can see this is how it looks from The Google drive link provided.</p>
+                </div>
+            </div>
+        </li>
+        <li class="cards_item">
+            <div class="card">
+                <div class="card_image"><img src="/assets/images/how-to-use/27-contribute-nav.png"></div>
+                <div class="card_content">
+                    <h2 class="card_title">CONTRIBUTE SECTION</h2><br>
+                    <p class="card_text">If the user wishes to Contribute to his other friends any extra materials can be shared here and the same will be updated in the site soon.</p>
+                </div>
+            </div>
+        </li>
+        <li class="cards_item">
+            <div class="card">
+                <div class="card_image"><img src="/assets/images/how-to-use/28-contribute-data.png"></div>
+                <div class="card_content">
+                    <h2 class="card_title"> CONTRIBUTE SECTION FRONTEND</h2><br>
+                    <p class="card_text">Here The user can choose the file to select and upload the same to us.</p>
+                </div>
+            </div>
+        </li>
+        <li class="cards_item">
+            <div class="card">
+                <div class="card_image"><img src="/assets/images/how-to-use/29-syll-nav.PNG"></div>
+                <div class="card_content">
+                    <h2 class="card_title">SYLLABUS SECTION</h2><br>
+                    <p class="card_text">This will simply direct the user to respective syllabus download copy.</p>
+                </div>
+            </div>
+        </li>
+        <li class="cards_item">
+            <div class="card">
+                <div class="card_image"><img src="/assets/images/how-to-use/30-res-nav.png"></div>
+                <div class="card_content">
+                    <h2 class="card_title">RESULTS DROPDOWN</h2><br>
+                    <p class="card_text">If the user wishes to Anytime navigate to BMSCE official Results Section he can navigate from here.</p>
+                </div>
+            </div>
+        </li>
+        <li class="cards_item">
+            <div class="card">
+                <div class="card_image"><img src="/assets/images/how-to-use/31-res-site.png"></div>
+                <div class="card_content">
+                    <h2 class="card_title">BMSCE RESULTS SITE</h2><br>
+                    <p class="card_text">This is where every semester students will have results released.</p>
+                </div>
+            </div>
+        </li>
+        <li class="cards_item">
+            <div class="card">
+                <div class="card_image"><img src="/assets/images/how-to-use/32-cont-main.png"></div>
+                <div class="card_content">
+                    <h2 class="card_title">CONTACT ME SECTION</h2><br>
+                    <p class="card_text">Here its the contact page where the user can send us any queries related to the site.</p>
+                </div>
+            </div>
+        </li>
+        <li class="cards_item">
+            <div class="card">
+                <div class="card_image"><img src="/assets/images/how-to-use/33-logout.png"></div>
+                <div class="card_content">
+                    <h2 class="card_title">LOGOUT BUTTON</h2><br>
+                    <p class="card_text">Here if the user is done with their work then they can logout and login back anytime.</p>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+
+
+
+</center>
+
+<div id="wrapper">
+
+    <div id="header">
+    </div>
+    <!-- #header -->
+
+    <div id="content">
+    </div>
+    <!-- #content -->
+
+
+    <div id="footer"><b><i class="fa fa-copyright" aria-hidden="true"></i></b> Copyright
+        <script>
+            document.write(new Date().getFullYear())
+        </script>. All Rights Reserved <br>Created By <a href="/nav-items/contactme.html" style="color: hsl(197, 100%, 55%);font-size: 15px;"><b> Karthik.S</b></a> (UG CSE BMSCE)</p>
+
+    </div>
+    <!-- #footer -->
+
+</div>
+<a href="whatsapp://send?text=Link : https://bmscesgpacalculator.netlify.app/" class="float">
+    <div aria-hidden="true " class="resp-sharing-button__icon resp-sharing-button__icon--solid ">
+        <svg xmlns="http://www.w3.org/2000/svg " viewBox="0 0 24 24 ">
+            <path
+                d="M20.1 3.9C17.9 1.7 15 .5 12 .5 5.8.5.7 5.6.7 11.9c0 2 .5 3.9 1.5 5.6L.6 23.4l6-1.6c1.6.9 3.5 1.3 5.4 1.3 6.3 0 11.4-5.1 11.4-11.4-.1-2.8-1.2-5.7-3.3-7.8zM12 21.4c-1.7 0-3.3-.5-4.8-1.3l-.4-.2-3.5 1 1-3.4L4 17c-1-1.5-1.4-3.2-1.4-5.1
+    0-5.2 4.2-9.4 9.4-9.4 2.5 0 4.9 1 6.7 2.8 1.8 1.8 2.8 4.2 2.8 6.7-.1 5.2-4.3 9.4-9.5 9.4zm5.1-7.1c-.3-.1-1.7-.9-1.9-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.1-.2.2-.3.2-.6.1s-1.2-.5-2.3-1.4c-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6s.3-.3.4-.5c.2-.1.3-.3.4-.5.1-.2
+    0-.4 0-.5C10 9 9.3 7.6 9 7c-.1-.4-.4-.3-.5-.3h-.6s-.4.1-.7.3c-.3.3-1 1-1 2.4s1 2.8 1.1 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.3-.3-.4-.6-.5z " />
+        </svg>
+    </div>
+</a>
+<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase.js"></script>
+
+<script>
+    var fireBase = fireBase || firebase;
+    var hasInit = false;
+    var firebaseConfig = {
+        apiKey: "AIzaSyCpcjpxkweTw7EasJ9n--ohfTrz629HsXY",
+        authDomain: "bmsce-sgpa-calculator-e2854.firebaseapp.com",
+        projectId: "bmsce-sgpa-calculator-e2854",
+        storageBucket: "bmsce-sgpa-calculator-e2854.appspot.com",
+        messagingSenderId: "1057810286679",
+        appId: "1:1057810286679:web:e471bcd883b6e1a750fb12",
+        measurementId: "G-7PH1CRW089"
+
+
+
+    };
+    // Initialize Firebase
+
+    if (!hasInit) {
+        firebase.initializeApp(firebaseConfig);
+        hasInit = true;
+    }
+</script>
+<script>
+    var mainApp = {};
+    (function() {
+        var mainContainer = document.getElementById("main_container");
+
+        var logtout = function() {
+            firebase.auth().signOut().then(function() {
+                console.log('success');
+                window.location.replace("index.html");
+            }, function() {})
+        }
+
+        var init = function() {
+            firebase.auth().onAuthStateChanged(function(user) {
+                if (user) {
+                    // User is signed in.
+                    console.log("stay");
+                    mainContainer.style.display = "";
+                } else {
+                    // No user is signed in.
+                    mainContainer.style.display = "none";
+                    console.log("redirect");
+                    window.location.replace("index.html");
+                }
+            });
+        }
+
+        init();
+
+        mainApp.logout = logtout;
+    })();
+</script>
+
+<script>
+    let name = localStorage.getItem("name-key");
+    let usn = localStorage.getItem("usn-key");
+    document.getElementById("usn").innerHTML = usn;
+    for (let i = 0; i < document.getElementsByClassName("name").length; i++) {
+        document.getElementsByClassName("name")[i].innerHTML = name
+    }
+</script>
+<script>
+    document.onreadystatechange = function() {
+        if (document.readyState === "complete") {
+            $("#panel_left").addClass("panel_left");
+            $("#panel_right").addClass("panel_right");
+            $("#loader").addClass("loaded-circle");
+            $("#loader-img").addClass("loaded-img");
+            $("#preloader").addClass("loaded-img");
+        }
+    }
+</script>
+
+<body>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+</body>
+
+
+</script>
+<!-- <a href="contactUs.html " id="icon " class="fa fa-envelope " style="font-size: 27px; "></a> -->
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
+
+
+
+
+</html>

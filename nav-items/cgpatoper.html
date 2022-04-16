@@ -1,0 +1,1194 @@
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="description" content="Calculate your sgpa and cgpa of your Bmsce results quickly.">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js" type="d3cf5652f3ceaab04f758bdc-text/javascript"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/css/cgpabody.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js" type="12280d5ac18791d49fa3142d-text/javascript"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+    <script src="/assets/js/cgpaper.js" type="d3cf5652f3ceaab04f758bdc-text/javascript"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@1,600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <title>BMSCE PERCENTAGE CALCULATOR</title>
+    <link rel="icon" href="/assets/images/title-image.png" type="image/icon type">
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <script>
+        function bootnavbar(el = 'main_navbar', options) {
+            let defaultOption = {
+
+            }
+
+            options = {...defaultOption,
+                ...options
+            }
+
+
+            var isMobile = {
+                Android: function() {
+                    return navigator.userAgent.match(/Android/i);
+                },
+                BlackBerry: function() {
+                    return navigator.userAgent.match(/BlackBerry/i);
+                },
+                iOS: function() {
+                    return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+                },
+                Opera: function() {
+                    return navigator.userAgent.match(/Opera Mini/i);
+                },
+                Windows: function() {
+                    return navigator.userAgent.match(/IEMobile/i) || navigator.userAgent.match(/WPDesktop/i);
+                },
+                any: function() {
+                    return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+                }
+            };
+
+            this.init = function() {
+                var dropdowns = document.getElementById(el).getElementsByClassName("dropdown");
+                console.log(dropdowns);
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var dropdown = dropdowns.item(i);
+                    dropdown.addEventListener("mouseover", function() {
+                        this.classList.add('show');
+                        this.getElementsByClassName("dropdown-menu")[0].classList.add('show');
+                    });
+                    dropdown.addEventListener("mouseout", function() {
+                        this.classList.remove('show');
+                        this.getElementsByClassName("dropdown-menu")[0].classList.remove('show');
+                    });
+                }
+                // document.getElementById(el).getElementsByClassName("dropdown").forEach(dropdown => {
+                //     dropdown.addEventListener("mouseover", function(){
+                //         dropdown.classList.add('show');
+                //         dropdown.getElementsByClassName("dropdown-menu")[0].classList.add('show');
+                //     });
+                //     dropdown.addEventListener("mouseout", function(){
+                //         dropdown.classList.remove('show');
+                //         dropdown.getElementsByClassName("dropdown-menu")[0].classList.remove('show');
+                //     });
+                // });
+            }
+
+            this.init();
+        }
+    </script>
+</head>
+
+<style>
+    #navlogo {
+        border-radius: 20px;
+        border: 3px solid white;
+        animation: progress 2s linear infinite;
+    }
+    
+    #user {
+        color: rgb(7, 247, 7);
+        margin: 11px;
+    }
+    /* body {
+        /* background-image: url(/images/bg.jpg); 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        background-color: indianred;
+    */
+    
+    #btn {
+        border-radius: 20px;
+        transition: all 0.4s ease-out;
+    }
+    
+    #btn:hover {
+        background-color: yellow;
+        color: red;
+        transform: scale(1.1);
+    }
+    
+    #header {
+        transition: all 0.4s ease-out;
+    }
+    
+    #header:hover {
+        background-color: aqua;
+        color: red;
+        transform: scale(1.07);
+        border-radius: 3rem;
+    }
+    
+    #nav_items {
+        transition: all 0.4s ease-out;
+    }
+    /* #nav_items:hover {
+        background-color: rgb(168, 233, 190);
+        border-radius: 15px;
+        color: red;
+    } */
+    
+    #mybmsce {
+        transition: all 0.4s ease-out;
+    }
+    
+    body {
+        background-color: #161b22;
+        background-size: cover;
+    }
+    
+     ::-webkit-scrollbar {
+        width: 8px;
+    }
+    
+     ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+    
+     ::-webkit-scrollbar-thumb {
+        background: #58A6FF;
+    }
+    
+     ::-webkit-scrollbar-thumb:hover {
+        background: blueviolet;
+    }
+    
+    .float {
+        position: fixed;
+        width: 40px;
+        height: 40px;
+        bottom: 70px;
+        right: 40px;
+        color: #FFF;
+        border-radius: 50px;
+        text-align: center;
+        box-shadow: 3px 3px 3px #999;
+        stroke: #fff;
+        background-color: #25D366;
+        border-color: #fff
+    }
+    
+    .resp-sharing-button__icon,
+    .resp-sharing-button__link {
+        display: inline-block
+    }
+    
+    .resp-sharing-button__link {
+        text-decoration: none;
+        color: #fff;
+        margin: .5em
+    }
+    
+    .resp-sharing-button {
+        border-radius: 5px;
+        transition: 25ms ease-out;
+        padding: .2em .7em;
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif
+    }
+    
+    .resp-sharing-button__icon svg {
+        width: 1.9em;
+        height: 2.4em;
+        margin-left: .1em
+    }
+    
+    .resp-sharing-button--small svg {
+        margin: 0;
+        vertical-align: middle
+    }
+    
+    .resp-sharing-button__icon {
+        stroke: #fff;
+        fill: none
+    }
+    
+    .resp-sharing-button__icon--solid,
+    .resp-sharing-button__icon--solidcircle {
+        fill: #fff;
+        stroke: none
+    }
+    
+    .resp-sharing-button--whatsapp {
+        background-color: #25D366;
+        border-color: #25D366
+    }
+    
+    .resp-sharing-button--whatsapp:active,
+    .resp-sharing-button--whatsapp:hover {
+        background-color: #1DA851;
+        border-color: #1DA851
+    }
+    
+    html {
+        position: relative;
+        min-height: 100%;
+    }
+    
+    .container {
+        width: 100%;
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    /* .footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        margin-top: 520px;
+        font-family: Arial, Helvetica, sans-serif;
+    } */
+    
+    img {
+        border-radius: 3rem;
+        border: 3px solid white;
+    }
+    /* footer {
+        color: white;
+        font-weight: bolder;
+        text-align: center;
+        padding-bottom: 20px;
+    } */
+    
+    .crumbs {
+        display: block;
+        width: 95%;
+        margin: 5px auto;
+        padding: 15px;
+        border-radius: 12px;
+    }
+    /* .card {
+        display: block;
+        width: 90%;
+        margin: 12px auto;
+        padding: 15px;
+        border-radius: 12px;
+    } */
+    
+    #b1 {
+        border: 3px solid gold;
+        border-radius: 15px;
+    }
+    
+    #b1:hover {
+        color: red;
+        background: rgb(6, 190, 6);
+    }
+    
+    #b2 {
+        border: 3px solid gold;
+        border-radius: 15px;
+    }
+    
+    #b2:hover {
+        color: red;
+        background: rgb(6, 190, 6);
+    }
+    
+    #imgs {
+        width: 50px;
+        height: 300px;
+        border: 10px ridge red;
+        border-radius: 100px;
+    }
+    
+    .slider {
+        display: block;
+        margin: 12px auto;
+        width: 53%;
+        padding: 10px;
+    }
+    
+    #exp {
+        display: block;
+        margin: 8px auto;
+        width: 33%;
+        padding: 5px;
+        border: 3px solid gold;
+        border-radius: 20px;
+    }
+    
+    .fa-google {
+        color: rgb(235, 18, 18);
+        text-decoration: none;
+        box-shadow: 3px 3px 3px #999;
+        background: conic-gradient(from -45deg, #ea4335 110deg, #4285f4 90deg 180deg, #34a853 180deg 270deg, #fbbc05 270deg) 73% 55%/150% 150% no-repeat;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        -webkit-text-fill-color: transparent;
+    }
+    
+    #icon {
+        /* background-color: red; */
+        position: fixed;
+        color: #3c70e2;
+        border: 3px solid purple;
+        /* background: linear-gradient(120deg, red 0%, orange 100%);
+        animation: progress 2s linear infinite; */
+        height: 45px;
+        width: 45px;
+        border-radius: 30px;
+        left: 37px;
+        bottom: 40px;
+        padding: 3.5px;
+    }
+    
+    #user {
+        color: rgb(104, 175, 255);
+    }
+    
+    .fa {
+        padding: 2px;
+        font-size: 27px;
+        width: 90px;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 5rem;
+    }
+    /* Add a hover effect if you want */
+    
+    .fa:hover {
+        opacity: 0.7;
+    }
+    /* Set a specific color for each brand */
+    /* Facebook */
+    
+    .fa-envelope {
+        background: #f0f1f5;
+        color: white;
+        border-radius: 5rem;
+        box-shadow: 3px 3px 3px #999;
+    }
+    /* /* body {
+        background-color: #000000;
+        color: #ffffff;
+    }
+
+    .progress-bar {
+        position: fixed;
+        top: 0;
+        width: 0;
+        height: 6px;
+        z-index: 2;
+        background: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
+        animation: progress 1s linear infinite;
+        border-radius: 5px;
+    }
+
+    .text {
+        padding: 10rem;
+    }
+
+    @keyframes progress {
+        0% {
+            filter: hue-rotate(0deg);
+        }
+
+        100% {
+            filter: hue-rotate(360deg);
+        }
+    }*/
+    
+    #ct {
+        border: 4px solid rgb(25, 199, 112);
+        border-radius: 15px;
+        background-color: rgb(241, 228, 183);
+        color: blue;
+    }
+    
+    #ct:hover {
+        color: red;
+        background: rgb(6, 190, 6);
+    }
+    
+    #calci {
+        border: 3px solid white;
+        margin-top: 1rem;
+        /* background: conic-gradient(120deg, #ea4335 0%, #74a7fa 25%, #89e9a2 50%, #f1c643 75%, pink 100%);
+        animation: progress 8s linear infinite; */
+    }
+    
+    #thumbs {
+        color: rgb(59, 32, 214);
+        font-size: larger;
+    }
+    
+    .footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: #161b22;
+        font-weight: bolder;
+        font-weight: 600;
+        color: white;
+        text-align: center;
+        height: 2.5rem;
+        text-align: center;
+        font-size: 15.5px;
+        padding-top: 19px;
+        padding-bottom: 4.3rem;
+    }
+    
+     ::placeholder {
+        font-weight: bolder;
+    }
+    
+    #contact {
+        font-weight: bolder;
+        font-size: 21px;
+        margin: 8px;
+        color: white;
+        cursor: pointer;
+    }
+    
+    .footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: rgb(41, 38, 38);
+        font-weight: bolder;
+        color: white;
+        text-align: center;
+        height: 2rem;
+        text-align: center;
+        /* font-size: 20px; */
+        padding-top: 19px;
+        padding-bottom: 4rem;
+    }
+    
+    #font {
+        font-weight: bold;
+    }
+    
+    .dropdown-item {
+        font-weight: bold;
+    }
+    
+    #nav_items {
+        transition: all 0.2s ease-in-out;
+        font-weight: bold;
+    }
+    
+    #nav_items:hover {
+        background-color: rgb(80, 59, 64);
+        border-radius: 2px;
+    }
+    
+    #bold {
+        font-weight: bold;
+    }
+    
+    .navbar-nav li:hover>ul.dropdown-menu {
+        display: block;
+    }
+    
+    .dropdown-submenu {
+        position: relative;
+    }
+    
+    .dropdown-submenu>.dropdown-menu {
+        top: 0;
+        left: 100%;
+        margin-top: -6px;
+    }
+    /* rotate caret on hover */
+    
+    .dropdown-menu>li>a:hover:after {
+        text-decoration: underline;
+        transform: rotate(-90deg);
+    }
+    
+    .container-fluid {
+        max-width: 100%;
+        margin: 0;
+    }
+    
+    #width {
+        position: static;
+        width: 450px;
+    }
+    
+    #preloader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #161b22;
+        z-index: 100;
+        /* animation: anim 5s infinite alternate; */
+    }
+    
+    #status {
+        margin-top: 17rem;
+        border: 3px solid white;
+        animation: beat .33s infinite alternate;
+    }
+    
+    @keyframes beat {
+        to {
+            transform: scale(1.4);
+        }
+    }
+    
+    #mod {
+        display: block;
+        width: 33%;
+        margin: 12px auto;
+    }
+    
+    .labelid {
+        background-color: #2cb831;
+        color: #f7f7f7;
+        padding: 5px;
+        border: 2px solid #161b22;
+        border-radius: 5px;
+        width: 100%;
+        font-size: 15px;
+        font-weight: 600;
+        /* margin-bottom: 4.5rem;/ */
+    }
+    
+     ::-webkit-scrollbar {
+        width: 8px;
+    }
+    
+     ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+    
+     ::-webkit-scrollbar-thumb {
+        background: #58A6FF;
+    }
+    
+     ::-webkit-scrollbar-thumb:hover {
+        background: blueviolet;
+    }
+    
+    @media print {
+        .name {
+            color: black;
+        }
+    }
+    
+    @media print {
+        #usn {
+            color: black;
+        }
+    }
+    
+    #preloader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #161b22;
+        z-index: 100;
+        animation: beat .33s infinite alternate;
+        /* border: 3px solid white;s */
+        /* margin-top: 17rem; */
+    }
+    
+    #preloader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        /* right: 0s */
+        /* width: 100%;
+        height: 100%; */
+        /* z-index: 100; */
+        background-color: #161b22;
+    }
+    
+    #loader-img {
+        display: block;
+        position: relative;
+        left: 50%;
+        top: 50%;
+        width: 200px;
+        height: 200px;
+        margin: -100px 0 0 -100px;
+        z-index: 1001;
+        background-image: url('/bmsceloader.jpg');
+        background-repeat: no-repeat;
+        background-size: 50%;
+        background-position: center;
+        z-index: 1020;
+        border-radius: 10rem;
+        background-color: #161b22;
+    }
+    
+    #loader {
+        display: block;
+        position: relative;
+        left: 50%;
+        width: 200px;
+        height: 200px;
+        margin: -100px 0 0 -100px;
+        border-radius: 50%;
+        border: 3px solid transparent;
+        border-top-color: red;
+        /* -webkit-animation: spin 2s linear infinite; */
+        animation: spin 4s linear infinite;
+        z-index: 1001;
+        background-color: #161b22;
+    }
+    
+    #loader:before {
+        content: "";
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        right: 5px;
+        bottom: 5px;
+        border-radius: 50%;
+        border: 3px solid transparent;
+        border-top-color: blue;
+        /* -webkit-animation: spin 3s linear infinite; */
+        animation: spin 3s linear infinite;
+    }
+    
+    #loader:after {
+        content: "";
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        right: 15px;
+        bottom: 15px;
+        border-radius: 50%;
+        border: 3px solid transparent;
+        border-top-color: yellow;
+        /* -webkit-animation: spin 1.5s linear infinite; */
+        animation: spin 1.5s linear infinite;
+        background-color: #161b22;
+    }
+    
+    @-webkit-keyframes spin {
+        0% {
+            -webkit-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+        100% {
+            -webkit-transform: rotate(360deg);
+            -ms-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
+    }
+    
+    @keyframes spin {
+        0% {
+            -webkit-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+        100% {
+            -webkit-transform: rotate(360deg);
+            -ms-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
+    }
+    
+    .loader-section {
+        position: fixed;
+        top: 0;
+        width: 51%;
+        height: 100%;
+        background: #222;
+        z-index: 1000;
+        -webkit-transform: translateX(0);
+        -ms-transform: translateX(0);
+        transform: translateX(0)
+    }
+    
+    .loader-section.section-left {
+        left: 0
+    }
+    
+    .loader-section.section-right {
+        right: 0
+    }
+    
+    .panel_left {
+        -webkit-transform: translateX(-100%);
+        -ms-transform: translateX(-100%);
+        transform: translateX(-100%);
+        -webkit-transition: all .7s .3s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+        transition: all .7s .3s cubic-bezier(0.645, 0.045, 0.355, 1.000)
+    }
+    
+    .panel_right {
+        -webkit-transform: translateX(100%);
+        -ms-transform: translateX(100%);
+        transform: translateX(100%);
+        -webkit-transition: all .7s .3s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+        transition: all .7s .3s cubic-bezier(0.645, 0.045, 0.355, 1.000)
+    }
+    
+    .loaded-circle {
+        opacity: 0;
+        /* border-radius: 10rem; */
+        -webkit-transition: all .2s ease-out;
+        transition: all .4s ease-in;
+        background-color: #161b22;
+    }
+    
+    .loaded-img {
+        /* border-radius: 10rem; */
+        visibility: hidden;
+        /* /* -webkit-transform: translateY(-100%); */
+        /* -ms-transform: translateY(-100%); */
+        /* transform: translateY(-100%); */
+        -webkit-transition: all .3s 1s ease-out;
+        transition: all .3s 1s ease-in;
+        background-color: #161b22;
+    }
+    
+    #footer {
+        position: fixed;
+        left: 0%;
+        bottom: 0%;
+    }
+    
+    *::-webkit-scrollbar,
+    *::-webkit-scrollbar-thumb {
+        width: 10px;
+        border-radius: 13px;
+        background-clip: padding-box;
+        border: 10px solid transparent;
+    }
+    
+    *::-webkit-scrollbar-thumb {
+        box-shadow: inset 0 0 0 10px;
+    }
+</style>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top sticky-onscroll" id="main_navbar">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/1st-year/homepage.html">
+            <img id="navlogo" src="/assets/images/logo.jpg" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+            <b style="color: white;" id="mybmsce"><b></b>% CALCULATOR</b>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/1st-year/homepage.html" id="nav_items"><b>HOME</b>
+                        </a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" style="color: white;">
+                        <b>SGPA CALCULATOR</b>
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" style="font-weight: bold;" href="/sgpa/semesters/1st year/sgpa-phy.html">PHYSICS CYCLE</a></li>
+                        <li><a class="dropdown-item" style="font-weight: bold;" href="/sgpa/semesters/1st year/sgpa-chem.html">CHEMISTRY CYCLE</a></li>
+                        <li><a class="dropdown-item" style="font-weight: bold;" href="/sgpa/semesters/3rd-sem.html">III SEMESTER</a></li>
+                        <li><a class="dropdown-item" style="font-weight: bold;" href="/sgpa/semesters/4th-sem.html">IV SEMESTER</a></li>
+                        <li><a class="dropdown-item" style="font-weight: bold;" href="/sgpa/semesters/5th-sem.html">V SEMESTER</a></li>
+                        <li><a class="dropdown-item" style="font-weight: bold;" href="/sgpa/semesters/6th-sem.html">VI SEMESTER</a></li>
+                        <li><a class="dropdown-item" style="font-weight: bold;" href="/sgpa/semesters/7th-sem.html">VII SEMESTER</a></li>
+                        <li><a class="dropdown-item" style="font-weight: bold;" href="/sgpa/semesters/8th-sem.html">VIII SEMESTER</a></li>
+
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" style="color: white;">
+                        <b> CGPA CALCULATOR</b>
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/cgpa/cgpa-cse.html">CSE BRANCH</a></li>
+                        <li><a class="dropdown-item" href="/cgpa/cgpa-ise.html">ISE BRANCH</a></li>
+                        <li><a class="dropdown-item" href="/cgpa/cgpa-etc.html">ETC BRANCH</a></li>
+                        <li><a class="dropdown-item" href="/cgpa/cgpa-ece.html">ECE BRANCH</a></li>
+                        <li><a class="dropdown-item" href="/cgpa/cgpa-eee.html">EEE BRANCH</a></li>
+                        <li><a class="dropdown-item" href="/cgpa/cgpa-eie.html">EIE BRANCH</a></li>
+                        <li><a class="dropdown-item" href="/cgpa/cgpa-mech.html">MECHANICAL BRANCH</a></li>
+                        <li><a class="dropdown-item" href="/cgpa/cgpa-me.html">MEDICAL ELECTRONICS BRANCH</a></li>
+                        <li><a class="dropdown-item" href="/cgpa/cgpa-iem.html">IEM BRANCH</a></li>
+                        <li><a class="dropdown-item" href="/cgpa/cgpa-chem.html">CHEMICAL BRANCH</a></li>
+                        <li><a class="dropdown-item" href="/cgpa/cgpa-civil.html">CIVIL BRANCH</a></li>
+                        <li><a class="dropdown-item" href="/cgpa/cgpa-bio.html">BIOTECH BRANCH</a></li>
+                        <li><a class="dropdown-item" href="/cgpa/cgpa-aiml.html">AI AND ML BRANCH</a></li>
+                        <li><a class="dropdown-item" href="/cgpa/cgpa-ae.html">AEROSPACE BRANCH</a></li>
+
+
+
+                    </ul>
+                </li>
+                <li class="nav-item dropdown disabled">
+                    <a class="nav-link dropdown-toggle disabled" href="#" role="button" data-bs-toggle="dropdown" style="color: #4285f4;">
+                        <b> % CALCULATOR</b>
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/nav-items/cgpatoper.html">OPEN </a></li>
+
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" style="color: white;">
+                        <b>MY PROFILE</b>
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/nav-items/User-Profile-Cgpa.html">CGPA DATA</a></li>
+                        <li><a class="dropdown-item" href="/nav-items/User-Profile-Sgpa.html">SGPA DATA</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" style="color: white;">
+                        <b> HOW TO USE</b>
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/nav-items/how-to-use.html">OPEN </a></li>
+
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" style="color: white;">
+                        <b>1ST YEARS</b>
+                    </a>
+
+
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/1st-year/homepage1styear.html">OPEN LINK </a></li>
+
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" style="color: white;">
+                        <b>RESULTS</b>
+                    </a>
+
+
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="https://results.bmsce.in/">OPEN LINK </a></li>
+
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link " href="/nav-items/contactme.html" id="nav_items" style="color: white;"><b>CONTACT</b>
+                    </a>
+
+                </li>
+
+
+                <li> <button class="btn btn-danger btn-sm" onclick="mainApp.logout();" style="margin-left: 0rem;font-weight: bolder;border: 1px solid white;margin-top: 5px;margin-bottom: 3px;"><img src="/images/logout.jpg" style="height: 12px;border-radius: 10rem;border: 1px solid white;margin-bottom: 0.2rem;"> LOG OUT <div id="main_container" style="display:none;">
+                          
+                </div></button></li>
+
+            </ul>
+            </li>
+
+
+        </div>
+    </div>
+</nav>
+<div ng-app="CalculatorApp" ng-controller="CalculatorController" style="
+    display: block;
+    width: 100%;
+">
+
+    <div id="preloader">
+        <div id="loader-img">
+            <div id="loader" style="border-radius: 10rem;"></div>
+        </div>
+        <!-- <div id="panel_left" class='loader-section section-left'></div> -->
+        <!-- <div id="panel_right" class='loader-section section-right'></div> -->
+    </div>
+
+
+    <div> <img id="bmsce_logo" src="/assets/images/logo.jpg" alt="..." class="rounded-circle mx-auto d-block" style="border-radius: 10rem;"></div>
+    <div class="branchSelect">
+
+        <div class="input_field">
+            <label style="font-size: 20px;"></i><b>NAME : </b></label>
+            <span class="name"></span>
+            <br>
+
+            <br>
+
+            <label style="font-size: 20px;"><b>USN : </b> </label>
+            <span id="usn"></span>
+        </div>
+        <br><br>
+        <h3 style="color: white;font-weight: bold;" id="h3">CGPA TO PERCENTAGE RESULTS</h3>
+
+
+        <h5 style="color: #47c6f8;font-weight: bold;font-size: large;">TO KNOW HOW THIS CALCULATION IS DONE CHECK
+            <div class="text-left" style="margin: 1rem;margin-left: -0.05rem;">
+                <button type="button ml-auto" class="btn btn-primary" style="font-weight:bold;border:1.4px solid white;" onclick="window.location.href='/assets/pdfs/percentage.pdf'"><i class="fa fa-edit"
+            style="width:max-content;  color: #ffffff;font-size: larger;"> </i> CALCULATION NOTE</button>
+            </div>
+        </h5><br>
+        <!-- <h5 style="color: #47c6f8;font-weight: bold;font-size: 15px;">DISCLAIMER</h5><br> -->
+
+    </div>
+    <div class="body">
+        <form>
+
+            <div class="card mb-3" style="background-color: #161b22;">
+                <h2 class="card-header" style="font-size:22px;padding:0.2rem 1.25rem;font-weight: bolder;color: white;"> BMSCE CGPA TO PERCENTAGE</h2>
+                <div class="card-body" style="padding:0.5rem;">
+                    <p class="card-title" style="margin-bottom:0.2rem; color: #f0ad4e;"><b>ENTER YOUR CGPA BELOW (1-10) </b></p>
+                    <br>
+                </div>
+
+                <div style="padding-bottom: 1rem">
+
+                    <center><input type="number" size="6" maxlength="3" id="n1" value="0" class="marks" /><br/><br/></center>
+                    <button type="submit" class="btn btn-success" onclick="cgpa();" id="calculate"><i class="fa fa-edit"
+                        style="width:max-content;  color: #ffffff;font-size: larger;"> </i> CALCULATE CGPA</button><br>
+                </div>
+
+                <span>  <button class="btn btn-success" type="button" id="sgpa_css"><i class="fa fa-sign-in"
+                style="width:max-content;  color: #ffffff;font-size: larger;"> </i> PERCENTAGE </button></span><span><input type="text" size="4" class="form-control" maxlength="4" id="percent"  readonly style="width: 250px;text-align: center;"></span>
+
+                <br><br>
+            </div>
+            <div class="card" style="background-color: #161b22;">
+                <input type="reset" value="Reset" style="margin-top: 0.2rem;margin: 0.2rem;">
+                <button onclick="if (!window.__cfRLUnblockHandlers) return false; myFunction()" class="download" data-cf-modified-d3cf5652f3ceaab04f758bdc-=""><b>DOWNLOAD</b></button>
+                <script type="d3cf5652f3ceaab04f758bdc-text/javascript">
+                    function myFunction() {
+                        window.print();
+                    }
+                </script><br><br>
+            </div>
+
+            <!-- <div class="text-left" style="background-color: #161b22;z-index: -1;">
+
+        <label id="m1">
+        I SEMESTER : (20 CREDITS) </label>&nbsp;<input type="number" size="6" maxlength="3" id="n1" value="0" class="marks" /><br/><br/>
+
+        <button type="submit" class="btn btn-success" onclick="cgpa();" id="calculate"><i class="fa fa-edit"
+            style="width:max-content;  color: #ffffff;font-size: larger;"> </i> CALCULATE CGPA</button><br>
+        <select id="operators" style="visibility:hidden;">
+            <option value="+">+</option>
+       
+        </select>
+
+
+
+        <span>  <button class="btn btn-success" type="button" id="sgpa_css"><i class="fa fa-sign-in"
+            style="width:max-content;  color: #ffffff;font-size: larger;"> </i> FINAL CGPA </button></span><span><input type="text" size="4" class="form-control" maxlength="4" id="result" readonly style="width: 250px;text-align: center;"></span>
+        <span>  <button class="btn btn-success" type="button" id="sgpa_css"><i class="fa fa-sign-in"
+                style="width:max-content;  color: #ffffff;font-size: larger;"> </i> PERCENTAGE </button></span><span><input type="text" size="4" class="form-control" maxlength="4" id="percent"  readonly style="width: 250px;text-align: center;"></span>
+
+        <br><br>
+
+    </div>
+
+
+
+
+    <button type="button" class="btn btn-info" onclick="savedata()" id="save_data" disabled><i class="fa fa-floppy-o"
+            style="width:max-content;  color: black;font-size: larger;"> </i> SAVE/UPDATE DATA</button>
+    <button type="button" class="btn btn-danger" onclick="delete_data()" id="delete_data"><i class="fa fa-trash"
+            style="width:max-content;  color: #ffffff;font-size: larger;"> </i> DELETE DATA</button>
+    <button onclick="if (!window.__cfRLUnblockHandlers) return false; myFunction()" class="btn btn-warning" data-cf-modified-d3cf5652f3ceaab04f758bdc-="" id="download"><i class="fa fa-download"
+            style="width:max-content;  color: #161b22;font-size: larger;"> </i> DOWNLOAD</button> -->
+
+            <div class="sidebar">
+            </div>
+    </div>
+    <div id="wrapper">
+
+        <div id="header">
+        </div>
+        <!-- #header -->
+
+        <div id="content">
+        </div>
+        <!-- #content -->
+
+
+        <div id="footer"><b>&copy;</b> Copyright
+            <script>
+                document.write(new Date().getFullYear())
+            </script>. All Rights Reserved <br>Created By <a href="/nav-items/contactme.html" style="color: hsl(197, 100%, 55%);font-size: 15px;"><b> Karthik.S</b></a> (UG CSE BMSCE)</p>
+
+        </div>
+        <!-- #footer -->
+
+    </div>
+    <a href="whatsapp://send?text=https://bmscesgpacalculator.netlify.app/" class="float">
+        <div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+            <svg xmlns="http://www.w3.org/2000/svg " viewBox="0 0 24 24">
+        <path
+            d="M20.1 3.9C17.9 1.7 15 .5 12 .5 5.8.5.7 5.6.7 11.9c0 2 .5 3.9 1.5 5.6L.6 23.4l6-1.6c1.6.9 3.5 1.3 5.4 1.3 6.3 0 11.4-5.1 11.4-11.4-.1-2.8-1.2-5.7-3.3-7.8zM12 21.4c-1.7 0-3.3-.5-4.8-1.3l-.4-.2-3.5 1 1-3.4L4 17c-1-1.5-1.4-3.2-1.4-5.1
+                    0-5.2 4.2-9.4 9.4-9.4 2.5 0 4.9 1 6.7 2.8 1.8 1.8 2.8 4.2 2.8 6.7-.1 5.2-4.3 9.4-9.5 9.4zm5.1-7.1c-.3-.1-1.7-.9-1.9-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.1-.2.2-.3.2-.6.1s-1.2-.5-2.3-1.4c-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6s.3-.3.4-.5c.2-.1.3-.3.4-.5.1-.2
+                    0-.4 0-.5C10 9 9.3 7.6 9 7c-.1-.4-.4-.3-.5-.3h-.6s-.4.1-.7.3c-.3.3-1 1-1 2.4s1 2.8 1.1 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.3-.3-.4-.6-.5z " />
+    </svg>
+        </div>
+    </a>
+    <script>
+        function cgpa() {
+            var percent, i, CreditTotal = 0;
+
+            var n1 = (document.getElementById('n1').value);
+            document.getElementById('percent').value = parseFloat((n1 - 0.75) * 10).toFixed(3);
+
+
+
+            document.getElementById('percent').value = parseFloat((res2 - 0.75) * 10).toFixed(3);
+
+            document.getElementById("save_data").disabled = false;
+
+
+
+            // Get the value of the input field with id="numb"
+            let x = document.getElementsByClassName('marks');
+            for (var i = 0; i < x.length; i++) {
+                let el = x[i];
+
+
+                var input = parseInt(el.value);
+                if (input < 0 || input > 10) {
+                    swal("INVALID INPUT!", "SGPA TO BE IN RANGE 1-10 TO CALCULATE CGPA", "warning");
+                    el.value = 0;
+                    document.getElementById('result').value = null;
+                    document.getElementById('percent').value = null;
+                    return;
+                }
+
+            }
+
+
+        }
+    </script>
+    <script>
+        function myFunction() {
+            window.print();
+        }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase.js"></script>
+
+    <script>
+        var fireBase = fireBase || firebase;
+        var hasInit = false;
+        var firebaseConfig = {
+            apiKey: "AIzaSyCpcjpxkweTw7EasJ9n--ohfTrz629HsXY",
+            authDomain: "bmsce-sgpa-calculator-e2854.firebaseapp.com",
+            projectId: "bmsce-sgpa-calculator-e2854",
+            storageBucket: "bmsce-sgpa-calculator-e2854.appspot.com",
+            messagingSenderId: "1057810286679",
+            appId: "1:1057810286679:web:e471bcd883b6e1a750fb12",
+            measurementId: "G-7PH1CRW089"
+
+
+
+        };
+        // Initialize Firebase
+
+        if (!hasInit) {
+            firebase.initializeApp(firebaseConfig);
+            hasInit = true;
+        }
+    </script>
+    <script>
+        var mainApp = {};
+        (function() {
+            var mainContainer = document.getElementById("main_container");
+
+            var logtout = function() {
+                firebase.auth().signOut().then(function() {
+                    console.log('success');
+                    window.location.replace("index.html");
+                }, function() {})
+            }
+
+            var init = function() {
+                firebase.auth().onAuthStateChanged(function(user) {
+                    if (user) {
+                        // User is signed in.
+                        console.log("stay");
+                        mainContainer.style.display = "";
+                    } else {
+                        // No user is signed in.
+                        mainContainer.style.display = "none";
+                        console.log("redirect");
+                        window.location.replace("index.html");
+                    }
+                });
+            }
+
+            init();
+
+            mainApp.logout = logtout;
+        })();
+    </script>
+
+    <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script> -->
+    <script>
+        let x = document.getElementsByClassName('marks');
+        for (var i = 0; i < x.length; i++) {
+            let el = x[i];
+
+            el.onkeyup = () => {
+                var input = parseInt(el.value);
+                if (input < 0 || input > 10) {
+                    alert("SGPA TO BE IN RANGE 1-10 TO CALCULATE CGPA!");
+                    el.value = null;
+                }
+                return;
+
+            };
+        }
+    </script>
+    <script>
+        document.onreadystatechange = function() {
+            if (document.readyState === "complete") {
+                $("#panel_left").addClass("panel_left");
+                $("#panel_right").addClass("panel_right");
+                $("#loader").addClass("loaded-circle");
+                $("#loader-img").addClass("loaded-img");
+                $("#preloader").addClass("loaded-img");
+            }
+        }
+    </script>
+    <script>
+        let name = localStorage.getItem("name-key");
+        let usn = localStorage.getItem("usn-key");
+        document.getElementById("usn").innerHTML = usn;
+        for (let i = 0; i < document.getElementsByClassName("name").length; i++) {
+            document.getElementsByClassName("name")[i].innerHTML = name
+        }
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" type="d3cf5652f3ceaab04f758bdc-text/javascript"></script>
+    </footer>
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js" type="d3cf5652f3ceaab04f758bdc-text/javascript"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" type="d3cf5652f3ceaab04f758bdc-text/javascript"></script>
+    </footer>
+    <script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js" data-cf-settings="d3cf5652f3ceaab04f758bdc-|49" defer=""></script>
+    <!-- <script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js" data-cf-settings="d3cf5652f3ceaab04f758bdc-|49" defer=""></script>s -->
